@@ -71,42 +71,51 @@ const CustomGamePlay = () => {
     console.log(`🔧 Custom - Adjusting ${type} for difficulty ${difficultyLevel}:`, text);
     
     if (difficultyLevel === 'beginner') {
-      // 초급: 간단한 어휘로 변경하되 문장 자르지 않음
+      // 초급: 간단한 어휘로 변경하되 원본 길이 유지
       let adjusted = text;
       
       if (type === 'title') {
         adjusted = text.replace(/괴롭힘을 당할 때/g, '힘들어할 때')
-                      .replace(/상황에서의/g, '')
-                      .replace(/대처/g, '해결하기');
+                      .replace(/대처/g, '해결하기')
+                      .replace(/어려운/g, '힘든')
+                      .replace(/복잡한/g, '어려운');
       } else if (type === 'situation') {
         adjusted = text.replace(/습니다|하셨습니다/g, '어요')
                       .replace(/하세요/g, '해요')
                       .replace(/어떻게 해야 할까요/g, '뭘 해야 할까요')
-                      .replace(/놀림을 받고/g, '괴롭힘을 당하고');
+                      .replace(/놀림을 받고/g, '괴롭힘을 당하고')
+                      .replace(/복잡한/g, '어려운');
       } else {
         adjusted = text.replace(/말씀드리고/g, '말하고')
                       .replace(/약속한다/g, '약속해요')
                       .replace(/거짓말한다/g, '거짓말해요')
-                      .replace(/말씀드린다/g, '말해요');
+                      .replace(/말씀드린다/g, '말해요')
+                      .replace(/선택한다/g, '골라요');
       }
       
       console.log(`🔧 Custom - Beginner adjusted:`, adjusted);
       return adjusted;
       
     } else if (difficultyLevel === 'advanced') {
-      // 고급: 간결하면서 정확한 표현
+      // 고급: 원본 유지하되 어휘만 고급화
       let adjusted = text;
       
       if (type === 'title') {
-        adjusted = text + ' - 윤리적 사고';
+        // 제목은 원본 유지
+        adjusted = text;
       } else if (type === 'situation') {
-        adjusted = text + ' 상황을 신중하게 판단하여 올바른 선택을 해보세요.';
+        // 상황 설명도 원본 유지
+        adjusted = text;
       } else {
-        if (text.includes('말씀드리고')) {
-          adjusted = text.replace('말씀드리고', '솔직하게 설명하고');
+        // 선택지만 어휘 고급화
+        if (text.includes('말하고')) {
+          adjusted = text.replace('말하고', '말씀드리고');
         }
-        if (text.includes('선생님께 말씀드린다')) {
-          adjusted = text.replace('선생님께 말씀드린다', '담당 선생님께 상황을 보고한다');
+        if (text.includes('약속해요')) {
+          adjusted = text.replace('약속해요', '약속한다');
+        }
+        if (text.includes('골라요')) {
+          adjusted = text.replace('골라요', '선택한다');
         }
       }
       
