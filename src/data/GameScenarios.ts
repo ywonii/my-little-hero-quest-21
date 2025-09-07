@@ -285,6 +285,100 @@ export const SCENARIOS = {
     }
   }
 },
+  hospital: {
+  // 1) 주사 맞기
+  injection: {
+    beginner: {
+      title: "주사 맞을 때",
+      situation: "의사선생님이 주사를 놓으려고 해요. 지우는 무서워요.",
+      options: [
+        { id: "a", text: "도망가요", is_correct: false },
+        { id: "b", text: "무서워도 참고 맞아요", is_correct: true },
+        { id: "c", text: "선생님을 밀쳐요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "병원에서 주사를 맞을 때",
+      situation: "의사선생님이 주사를 놓으려고 하는데 지우는 겁이 나요.",
+      options: [
+        { id: "a", text: "소리를 지르며 거부한다", is_correct: false },
+        { id: "b", text: "겁이 나도 가만히 주사를 맞는다", is_correct: true },
+        { id: "c", text: "주사를 피하려고 의사선생님을 밀친다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "의료 처치 상황에서의 태도",
+      situation: "건강을 위해 주사 처치가 필요합니다. 두려움이 크더라도 어떻게 행동하는 것이 바람직할까요?",
+      options: [
+        { id: "a", text: "거부하며 도망가 안전을 위협한다", is_correct: false },
+        { id: "b", text: "불안하지만 의료진 지시에 따라 차분히 처치를 받는다", is_correct: true },
+        { id: "c", text: "불만을 표현하며 물리적으로 저항한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 2) 대기실 예절
+  waitingRoom: {
+    beginner: {
+      title: "대기실에서",
+      situation: "병원 대기실에서 기다려요. 지루해요.",
+      options: [
+        { id: "a", text: "크게 떠들어요", is_correct: false },
+        { id: "b", text: "조용히 책을 봐요", is_correct: true },
+        { id: "c", text: "의자 위에 뛰어요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "병원 대기실에서 기다릴 때",
+      situation: "병원 대기실에서 오래 기다려야 해서 지루해요.",
+      options: [
+        { id: "a", text: "큰 소리로 떠들며 돌아다닌다", is_correct: false },
+        { id: "b", text: "책을 읽거나 조용히 논다", is_correct: true },
+        { id: "c", text: "다른 환자들에게 말을 걸어 방해한다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "공공장소에서의 배려",
+      situation: "대기실에서 많은 환자들이 치료 순서를 기다리고 있습니다. 어떤 행동이 적절할까요?",
+      options: [
+        { id: "a", text: "지루함을 참지 못하고 소란을 피운다", is_correct: false },
+        { id: "b", text: "조용히 책을 읽거나 시간을 보내며 다른 사람을 배려한다", is_correct: true },
+        { id: "c", text: "다른 사람에게 말을 걸어 방해한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 3) 아픈 곳 설명
+  explainPain: {
+    beginner: {
+      title: "아픈 곳 말하기",
+      situation: "의사선생님이 어디가 아프냐고 물어봐요.",
+      options: [
+        { id: "a", text: "아픈 데 없다고 거짓말해요", is_correct: false },
+        { id: "b", text: "아픈 곳을 말해요", is_correct: true },
+        { id: "c", text: "다른 얘기를 해요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "진료할 때",
+      situation: "의사선생님이 어디가 아픈지 물어보세요.",
+      options: [
+        { id: "a", text: "아픈 곳이 없다고 거짓말한다", is_correct: false },
+        { id: "b", text: "아픈 곳을 정확히 설명한다", is_correct: true },
+        { id: "c", text: "관계없는 이야기를 한다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "의료진과의 소통",
+      situation: "정확한 진료를 위해 환자가 아픈 부위를 설명해야 합니다. 지우의 태도로 적절한 것은 무엇일까요?",
+      options: [
+        { id: "a", text: "사실을 숨기고 잘못된 정보를 준다", is_correct: false },
+        { id: "b", text: "아픈 곳과 증상을 정확히 전달한다", is_correct: true },
+        { id: "c", text: "관련 없는 이야기를 늘어놓는다", is_correct: false }
+      ]
+    }
+  }
+},
 
   // ===== Playground 테마 (3세트) =====
   playground: {
