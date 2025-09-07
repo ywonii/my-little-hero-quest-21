@@ -192,8 +192,10 @@ export const SCENARIOS = {
         ]
       }
     }
-    // ===== Transport 테마 (3세트) =====
-transport: {
+  },
+
+  // ===== Transport 테마 (3세트) =====
+  transport: {
   // 1) 자리지키기/양보
   giveSeat: {
     beginner: {
@@ -285,8 +287,6 @@ transport: {
         { id: "c", text: "문 바로 앞에서 움직이지 않고 버틴다", is_correct: false }
       ]
     }
+    }
   }
-
-
-  
 };
