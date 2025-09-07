@@ -191,102 +191,289 @@ export const SCENARIOS = {
           { id: "c", text: "친구 잘못이라며 책임을 전가한다", is_correct: false }
         ]
       }
-    }
-  },
-
-  // ===== Transport 테마 (3세트) =====
-  transport: {
-  // 1) 자리지키기/양보
-  giveSeat: {
+    },
+    hospital: {
+  // 1) 주사 맞기
+  injection: {
     beginner: {
-      title: "자리를 양보해요",
-      situation: "지하철에 할머니가 타셨어요. 빈 자리가 없어요.",
+      title: "주사 맞을 때",
+      situation: "의사선생님이 주사를 놓으려고 해요. 지우는 무서워요.",
       options: [
-        { id: "a", text: "모른 척해요", is_correct: false },
-        { id: "b", text: "자리를 양보해요", is_correct: true },
-        { id: "c", text: "다른 사람이 하라고 해요", is_correct: false }
+        { id: "a", text: "도망가요", is_correct: false },
+        { id: "b", text: "무서워도 참고 맞아요", is_correct: true },
+        { id: "c", text: "선생님을 밀쳐요", is_correct: false }
       ]
     },
     intermediate: {
-      title: "지하철에서 자리를 양보할 때",
-      situation: "지하철에 할머니가 타셨는데 빈 자리가 없어요.",
+      title: "병원에서 주사를 맞을 때",
+      situation: "의사선생님이 주사를 놓으려고 하는데 지우는 겁이 나요.",
       options: [
-        { id: "a", text: "모른 척하고 앉아 있는다", is_correct: false },
-        { id: "b", text: "자리에서 일어나 양보한다", is_correct: true },
-        { id: "c", text: "다른 사람이 양보할 때까지 기다린다", is_correct: false }
+        { id: "a", text: "소리를 지르며 거부한다", is_correct: false },
+        { id: "b", text: "겁이 나도 가만히 주사를 맞는다", is_correct: true },
+        { id: "c", text: "주사를 피하려고 의사선생님을 밀친다", is_correct: false }
       ]
     },
     advanced: {
-      title: "배려가 필요한 승객을 만났을 때",
-      situation: "혼잡한 지하철에서 거동이 불편한 어르신이 탑승했습니다. 공공 예절과 안전을 고려할 때 가장 바람직한 행동은 무엇일까요?",
+      title: "의료 처치 상황에서의 태도",
+      situation: "건강을 위해 주사 처치가 필요합니다. 두려움이 크더라도 어떻게 행동하는 것이 바람직할까요?",
       options: [
-        { id: "a", text: "시선을 피하고 자리를 계속 차지한다", is_correct: false },
-        { id: "b", text: "정중히 양보 의사를 밝히고 자리를 제공한다", is_correct: true },
-        { id: "c", text: "주변 사람에게 대신 양보하라고 요청한다", is_correct: false }
+        { id: "a", text: "거부하며 도망가 안전을 위협한다", is_correct: false },
+        { id: "b", text: "불안하지만 의료진 지시에 따라 차분히 처치를 받는다", is_correct: true },
+        { id: "c", text: "불만을 표현하며 물리적으로 저항한다", is_correct: false }
       ]
     }
   },
 
-  // 2) 버스에서 큰 소리
-  volumeOnBus: {
+  // 2) 대기실 예절
+  waitingRoom: {
     beginner: {
-      title: "버스에서 조용히",
-      situation: "버스에서 친구와 이야기하고 싶어요.",
+      title: "대기실에서",
+      situation: "병원 대기실에서 기다려요. 지루해요.",
       options: [
-        { id: "a", text: "큰 소리로 떠들어요", is_correct: false },
-        { id: "b", text: "작은 목소리로 짧게 말해요", is_correct: true },
-        { id: "c", text: "전화로 크게 통화해요", is_correct: false }
+        { id: "a", text: "크게 떠들어요", is_correct: false },
+        { id: "b", text: "조용히 책을 봐요", is_correct: true },
+        { id: "c", text: "의자 위에 뛰어요", is_correct: false }
       ]
     },
     intermediate: {
-      title: "버스에서 이야기할 때",
-      situation: "버스에서 친구와 재미있는 이야기를 하고 싶어요.",
+      title: "병원 대기실에서 기다릴 때",
+      situation: "병원 대기실에서 오래 기다려야 해서 지루해요.",
       options: [
-        { id: "a", text: "큰 소리로 이야기한다", is_correct: false },
-        { id: "b", text: "작은 목소리로 조용히 이야기한다", is_correct: true },
-        { id: "c", text: "스피커폰으로 통화한다", is_correct: false }
+        { id: "a", text: "큰 소리로 떠들며 돌아다닌다", is_correct: false },
+        { id: "b", text: "책을 읽거나 조용히 논다", is_correct: true },
+        { id: "c", text: "다른 환자들에게 말을 걸어 방해한다", is_correct: false }
       ]
     },
     advanced: {
-      title: "공공장소 소음 예절",
-      situation: "승객이 많은 버스 안에서 대화를 해야 합니다. 타인의 쾌적함을 고려한 적절한 소통 방식은 무엇일까요?",
+      title: "공공장소에서의 배려",
+      situation: "대기실에서 많은 환자들이 치료 순서를 기다리고 있습니다. 어떤 행동이 적절할까요?",
       options: [
-        { id: "a", text: "흥분해서 목소리를 높이며 대화한다", is_correct: false },
-        { id: "b", text: "필요한 말만 낮은 음성으로 짧게 전달한다", is_correct: true },
-        { id: "c", text: "주변도 듣게끔 스피커폰을 사용한다", is_correct: false }
+        { id: "a", text: "지루함을 참지 못하고 소란을 피운다", is_correct: false },
+        { id: "b", text: "조용히 책을 읽거나 시간을 보내며 다른 사람을 배려한다", is_correct: true },
+        { id: "c", text: "다른 사람에게 말을 걸어 방해한다", is_correct: false }
       ]
     }
   },
 
-  // 3) 지하철 문 앞 질서
-  subwayDoors: {
+  // 3) 아픈 곳 설명
+  explainPain: {
     beginner: {
-      title: "먼저 내리고 타요",
-      situation: "지하철 문이 열렸어요. 내리는 사람이 많아요.",
+      title: "아픈 곳 말하기",
+      situation: "의사선생님이 어디가 아프냐고 물어봐요.",
       options: [
-        { id: "a", text: "사람을 밀고 먼저 타요", is_correct: false },
-        { id: "b", text: "사람들이 다 내린 뒤에 타요", is_correct: true },
-        { id: "c", text: "문 앞을 막고 서 있어요", is_correct: false }
+        { id: "a", text: "아픈 데 없다고 거짓말해요", is_correct: false },
+        { id: "b", text: "아픈 곳을 말해요", is_correct: true },
+        { id: "c", text: "다른 얘기를 해요", is_correct: false }
       ]
     },
     intermediate: {
-      title: "지하철 출입문에서",
-      situation: "지하철 문이 열렸는데 내리는 사람들이 많아요.",
+      title: "진료할 때",
+      situation: "의사선생님이 어디가 아픈지 물어보세요.",
       options: [
-        { id: "a", text: "사람들을 밀치고 먼저 탄다", is_correct: false },
-        { id: "b", text: "내리는 사람을 먼저 보내고 탄다", is_correct: true },
-        { id: "c", text: "문 앞에서 비켜주지 않는다", is_correct: false }
+        { id: "a", text: "아픈 곳이 없다고 거짓말한다", is_correct: false },
+        { id: "b", text: "아픈 곳을 정확히 설명한다", is_correct: true },
+        { id: "c", text: "관계없는 이야기를 한다", is_correct: false }
       ]
     },
     advanced: {
-      title: "승하차 질서 지키기",
-      situation: "혼잡한 플랫폼에서 전동차 문이 열렸습니다. 안전과 효율을 높이기 위한 올바른 승차 절차는 무엇일까요?",
+      title: "의료진과의 소통",
+      situation: "정확한 진료를 위해 환자가 아픈 부위를 설명해야 합니다. 지우의 태도로 적절한 것은 무엇일까요?",
       options: [
-        { id: "a", text: "자리를 선점하려고 먼저 밀고 들어간다", is_correct: false },
-        { id: "b", text: "내리는 승객을 먼저 보내고, 통로를 비켜 서서 대기한 후 탑승한다", is_correct: true },
-        { id: "c", text: "문 바로 앞에서 움직이지 않고 버틴다", is_correct: false }
+        { id: "a", text: "사실을 숨기고 잘못된 정보를 준다", is_correct: false },
+        { id: "b", text: "아픈 곳과 증상을 정확히 전달한다", is_correct: true },
+        { id: "c", text: "관련 없는 이야기를 늘어놓는다", is_correct: false }
       ]
     }
+  }
+},
+    library: {
+  // 1) 조용히 하기
+  quiet: {
+    beginner: {
+      title: "조용히 해야 해요",
+      situation: "도서관에서 친구랑 이야기하고 싶어요.",
+      options: [
+        { id: "a", text: "큰 소리로 이야기해요", is_correct: false },
+        { id: "b", text: "속삭이거나 밖에 나가서 말해요", is_correct: true },
+        { id: "c", text: "다른 사람들 앞에서 크게 말해요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "도서관에서 이야기할 때",
+      situation: "도서관에서 친구와 재미있는 이야기를 하고 싶어요.",
+      options: [
+        { id: "a", text: "큰 소리로 떠든다", is_correct: false },
+        { id: "b", text: "작은 목소리로 조심히 말한다", is_correct: true },
+        { id: "c", text: "다른 사람들을 불러 모아 함께 이야기한다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "학습 공간 예절",
+      situation: "도서관은 학습과 독서를 위한 조용한 공간입니다. 이때 지우가 취할 행동으로 올바른 것은?",
+      options: [
+        { id: "a", text: "흥분해서 웃거나 큰 소리로 말한다", is_correct: false },
+        { id: "b", text: "조용히 하며 주변 학습 분위기를 존중한다", is_correct: true },
+        { id: "c", text: "다른 사람에게 장난을 건다", is_correct: false }
+      ]
     }
+  },
+
+  // 2) 책 찾기
+  findBook: {
+    beginner: {
+      title: "책 찾기",
+      situation: "책을 찾고 있는데 못 찾겠어요.",
+      options: [
+        { id: "a", text: "책장을 막 뒤져요", is_correct: false },
+        { id: "b", text: "사서 선생님께 물어봐요", is_correct: true },
+        { id: "c", text: "다른 사람이 읽는 책을 빼앗아요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "도서관에서 책을 찾을 때",
+      situation: "읽고 싶은 책이 어디 있는지 모르겠어요.",
+      options: [
+        { id: "a", text: "책을 아무렇게나 꺼내본다", is_correct: false },
+        { id: "b", text: "사서에게 물어본다", is_correct: true },
+        { id: "c", text: "남이 보고 있는 책을 뺏는다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "도서관 자료 이용",
+      situation: "원하는 자료가 어디에 있는지 알 수 없을 때, 가장 적절한 행동은?",
+      options: [
+        { id: "a", text: "책장을 뒤엎으며 찾는다", is_correct: false },
+        { id: "b", text: "사서에게 문의하거나 검색 시스템을 이용한다", is_correct: true },
+        { id: "c", text: "남의 책을 강제로 가져온다", is_correct: false }
+      ]
+    }
+  },
+
+  // 3) 음식 반입
+  noFood: {
+    beginner: {
+      title: "도서관에서 먹기",
+      situation: "책을 읽다가 배고파요.",
+      options: [
+        { id: "a", text: "책상 밑에서 과자를 먹어요", is_correct: false },
+        { id: "b", text: "밖에 나가서 먹어요", is_correct: true },
+        { id: "c", text: "몰래 음식을 먹어요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "도서관에서 음식을 먹고 싶을 때",
+      situation: "도서관에서 공부하다가 배가 고파졌어요.",
+      options: [
+        { id: "a", text: "도서관 안에서 몰래 먹는다", is_correct: false },
+        { id: "b", text: "밖이나 허용된 곳에서 먹는다", is_correct: true },
+        { id: "c", text: "다른 사람 몰래 과자를 꺼낸다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "공공장소 음식 규칙",
+      situation: "도서관에서는 음식 섭취가 제한됩니다. 가장 적절한 행동은 무엇일까요?",
+      options: [
+        { id: "a", text: "배가 고프니 자리에서 바로 먹는다", is_correct: false },
+        { id: "b", text: "허용된 공간에서 섭취하거나 밖에서 해결한다", is_correct: true },
+        { id: "c", text: "몰래 음식을 먹으며 규칙을 어긴다", is_correct: false }
+      ]
+    }
+  }
+},
+    home: {
+  // 1) 식사 시간
+  dinnerTime: {
+    beginner: {
+      title: "밥 먹는 시간",
+      situation: "엄마가 밥 먹으라고 불러요. 지우는 게임하고 싶어요.",
+      options: [
+        { id: "a", text: "게임을 계속해요", is_correct: false },
+        { id: "b", text: "게임을 끄고 밥 먹으러 가요", is_correct: true },
+        { id: "c", text: "밥을 안 먹어요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "집에서 식사 시간",
+      situation: "저녁 식사 시간인데 게임을 하고 싶어요.",
+      options: [
+        { id: "a", text: "게임을 하며 식사를 미룬다", is_correct: false },
+        { id: "b", text: "게임을 끄고 가족과 함께 식사한다", is_correct: true },
+        { id: "c", text: "밥을 먹으면서 게임을 한다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "가족 식사 예절",
+      situation: "가족과 함께하는 저녁 식사는 중요한 시간입니다. 바람직한 태도는 무엇일까요?",
+      options: [
+        { id: "a", text: "개인 놀이를 계속하며 식사를 거른다", is_correct: false },
+        { id: "b", text: "가족과의 대화를 존중하며 식탁에 함께 앉는다", is_correct: true },
+        { id: "c", text: "식사 도중 게임을 한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 2) 숙제와 TV
+  homeworkTV: {
+    beginner: {
+      title: "숙제하기",
+      situation: "지우는 숙제를 해야 하는데 TV 보고 싶어요.",
+      options: [
+        { id: "a", text: "TV부터 봐요", is_correct: false },
+        { id: "b", text: "숙제를 먼저 해요", is_correct: true },
+        { id: "c", text: "TV 보면서 대충 해요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "집에서 숙제와 TV",
+      situation: "숙제를 해야 하는데 재미있는 TV 프로그램이 나와요.",
+      options: [
+        { id: "a", text: "TV를 먼저 본다", is_correct: false },
+        { id: "b", text: "숙제를 먼저 하고 TV를 본다", is_correct: true },
+        { id: "c", text: "숙제를 대충 하면서 TV를 본다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "시간 관리 습관",
+      situation: "중요한 과제를 앞두고 오락거리가 눈에 띕니다. 바람직한 시간 관리 태도는?",
+      options: [
+        { id: "a", text: "오락을 먼저 즐기며 과제를 미룬다", is_correct: false },
+        { id: "b", text: "과제를 우선적으로 수행하고 여가를 즐긴다", is_correct: true },
+        { id: "c", text: "과제를 대충 하면서 동시에 즐긴다", is_correct: false }
+      ]
+    }
+  },
+
+  // 3) 동생과 장난감
+  toys: {
+    beginner: {
+      title: "장난감 나누기",
+      situation: "동생이 장난감을 갖고 싶어해요.",
+      options: [
+        { id: "a", text: "안 준다고 해요", is_correct: false },
+        { id: "b", text: "조금 나눠줘요", is_correct: true },
+        { id: "c", text: "동생 장난감을 빼앗아요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "동생과 장난감 나누기",
+      situation: "동생이 내가 가지고 노는 장난감을 원해요.",
+      options: [
+        { id: "a", text: "절대 안 준다고 한다", is_correct: false },
+        { id: "b", text: "조금 놀고 나서 나눠서 논다", is_correct: true },
+        { id: "c", text: "동생 장난감을 뺏는다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "형제와의 관계",
+      situation: "가족과의 올바른 관계를 위해 장난감을 공유해야 할 때, 지우가 바람직하게 취할 행동은?",
+      options: [
+        { id: "a", text: "끝까지 독점하며 거부한다", is_correct: false },
+        { id: "b", text: "적절히 순서를 조율해 함께 사용한다", is_correct: true },
+        { id: "c", text: "상대 물건을 빼앗는다", is_correct: false }
+      ]
+    }
+  }
+},
+    
   }
 };
