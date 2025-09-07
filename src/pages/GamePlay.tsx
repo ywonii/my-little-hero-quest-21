@@ -130,21 +130,45 @@ const GamePlay = () => {
 
 
 const loadScenarios = () => {
-  setLoading(true);
   try {
-    const scenarioSet = SCENARIOS[theme as keyof typeof SCENARIOS];
+    setLoading(true);
+
+    // theme에 맞는 시나리오 묶음 찾기
+    const themeKey = (theme as keyof typeof SCENARIOS) || 'school';
+    const scenarioSet = SCENARIOS[themeKey];
 
     if (!scenarioSet) {
       setScenarios([]);
       return;
     }
 
-    // 난이도별 선택
-    const difficultySet = Object.values(scenarioSet).map(
-      (scenario: any) => scenario[difficultyLevel]
-    );
+    // 난이도(beginner/intermediate/advanced)에 맞는 항목만 추출
+    const picked = Object.values(scenarioSet).map((one: any) => one[difficultyLevel]);
 
-    setScenarios(difficultySet);
+    // option_order 채우기 + 선택지 섞기
+    const withRandomizedOptions = picked.map((s: any) => {
+      // 먼저 option 기본 형태 정리
+      const baseOpts = s.options.map((opt: any, idx: number) => ({
+        id: opt.id ?? String(idx),
+        text: opt.text,
+        is_correct: !!opt.is_correct,
+        option_order: idx,
+      }));
+
+      // 선택지 섞기 (a/b/c 위치 랜덤)
+      const shuffledOpts = [...baseOpts]
+        .sort(() => Math.random() - 0.5)
+        .map((opt, idx) => ({ ...opt, option_order: idx }));
+
+      return { ...s, options: shuffledOpts };
+    });
+
+    // 문제 순서도 섞고 싶으면 유지, 아니면 제거해도 됨
+    const shuffledQuestions = [...withRandomizedOptions].sort(() => Math.random() - 0.5);
+
+    setScenarios(shuffledQuestions);
+  } catch (e) {
+    console.error(e);
   } finally {
     setLoading(false);
   }
