@@ -379,6 +379,100 @@ export const SCENARIOS = {
     }
   }
 },
+  library: {
+  // 1) 조용히 하기
+  quiet: {
+    beginner: {
+      title: "조용히 해야 해요",
+      situation: "도서관에서 친구랑 이야기하고 싶어요.",
+      options: [
+        { id: "a", text: "큰 소리로 이야기해요", is_correct: false },
+        { id: "b", text: "속삭이거나 밖에 나가서 말해요", is_correct: true },
+        { id: "c", text: "다른 사람들 앞에서 크게 말해요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "도서관에서 이야기할 때",
+      situation: "도서관에서 친구와 재미있는 이야기를 하고 싶어요.",
+      options: [
+        { id: "a", text: "큰 소리로 떠든다", is_correct: false },
+        { id: "b", text: "작은 목소리로 조심히 말한다", is_correct: true },
+        { id: "c", text: "다른 사람들을 불러 모아 함께 이야기한다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "학습 공간 예절",
+      situation: "도서관은 학습과 독서를 위한 조용한 공간입니다. 이때 지우가 취할 행동으로 올바른 것은?",
+      options: [
+        { id: "a", text: "흥분해서 웃거나 큰 소리로 말한다", is_correct: false },
+        { id: "b", text: "조용히 하며 주변 학습 분위기를 존중한다", is_correct: true },
+        { id: "c", text: "다른 사람에게 장난을 건다", is_correct: false }
+      ]
+    }
+  },
+
+  // 2) 책 찾기
+  findBook: {
+    beginner: {
+      title: "책 찾기",
+      situation: "책을 찾고 있는데 못 찾겠어요.",
+      options: [
+        { id: "a", text: "책장을 막 뒤져요", is_correct: false },
+        { id: "b", text: "사서 선생님께 물어봐요", is_correct: true },
+        { id: "c", text: "다른 사람이 읽는 책을 빼앗아요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "도서관에서 책을 찾을 때",
+      situation: "읽고 싶은 책이 어디 있는지 모르겠어요.",
+      options: [
+        { id: "a", text: "책을 아무렇게나 꺼내본다", is_correct: false },
+        { id: "b", text: "사서에게 물어본다", is_correct: true },
+        { id: "c", text: "남이 보고 있는 책을 뺏는다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "도서관 자료 이용",
+      situation: "원하는 자료가 어디에 있는지 알 수 없을 때, 가장 적절한 행동은?",
+      options: [
+        { id: "a", text: "책장을 뒤엎으며 찾는다", is_correct: false },
+        { id: "b", text: "사서에게 문의하거나 검색 시스템을 이용한다", is_correct: true },
+        { id: "c", text: "남의 책을 강제로 가져온다", is_correct: false }
+      ]
+    }
+  },
+
+  // 3) 음식 반입
+  noFood: {
+    beginner: {
+      title: "도서관에서 먹기",
+      situation: "책을 읽다가 배고파요.",
+      options: [
+        { id: "a", text: "책상 밑에서 과자를 먹어요", is_correct: false },
+        { id: "b", text: "밖에 나가서 먹어요", is_correct: true },
+        { id: "c", text: "몰래 음식을 먹어요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "도서관에서 음식을 먹고 싶을 때",
+      situation: "도서관에서 공부하다가 배가 고파졌어요.",
+      options: [
+        { id: "a", text: "도서관 안에서 몰래 먹는다", is_correct: false },
+        { id: "b", text: "밖이나 허용된 곳에서 먹는다", is_correct: true },
+        { id: "c", text: "다른 사람 몰래 과자를 꺼낸다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "공공장소 음식 규칙",
+      situation: "도서관에서는 음식 섭취가 제한됩니다. 가장 적절한 행동은 무엇일까요?",
+      options: [
+        { id: "a", text: "배가 고프니 자리에서 바로 먹는다", is_correct: false },
+        { id: "b", text: "허용된 공간에서 섭취하거나 밖에서 해결한다", is_correct: true },
+        { id: "c", text: "몰래 음식을 먹으며 규칙을 어긴다", is_correct: false }
+      ]
+    }
+  }
+},
 
   // ===== Playground 테마 (3세트) =====
   playground: {
