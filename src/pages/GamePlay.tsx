@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { ArrowLeft, Star, RotateCcw } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
+import { SCENARIOS } from '@/data/GameScenarios';
 
 interface Scenario {
   id: string;
@@ -127,7 +128,6 @@ const GamePlay = () => {
     return text; // intermediate는 원본 유지
   };
 
-  import { SCENARIOS } from '@/data/GameScenarios';
 
 const loadScenarios = () => {
   setLoading(true);
