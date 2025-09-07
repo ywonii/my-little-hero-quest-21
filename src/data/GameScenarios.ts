@@ -192,5 +192,101 @@ export const SCENARIOS = {
         ]
       }
     }
+    // ===== Transport 테마 (3세트) =====
+transport: {
+  // 1) 자리지키기/양보
+  giveSeat: {
+    beginner: {
+      title: "자리를 양보해요",
+      situation: "지하철에 할머니가 타셨어요. 빈 자리가 없어요.",
+      options: [
+        { id: "a", text: "모른 척해요", is_correct: false },
+        { id: "b", text: "자리를 양보해요", is_correct: true },
+        { id: "c", text: "다른 사람이 하라고 해요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "지하철에서 자리를 양보할 때",
+      situation: "지하철에 할머니가 타셨는데 빈 자리가 없어요.",
+      options: [
+        { id: "a", text: "모른 척하고 앉아 있는다", is_correct: false },
+        { id: "b", text: "자리에서 일어나 양보한다", is_correct: true },
+        { id: "c", text: "다른 사람이 양보할 때까지 기다린다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "배려가 필요한 승객을 만났을 때",
+      situation: "혼잡한 지하철에서 거동이 불편한 어르신이 탑승했습니다. 공공 예절과 안전을 고려할 때 가장 바람직한 행동은 무엇일까요?",
+      options: [
+        { id: "a", text: "시선을 피하고 자리를 계속 차지한다", is_correct: false },
+        { id: "b", text: "정중히 양보 의사를 밝히고 자리를 제공한다", is_correct: true },
+        { id: "c", text: "주변 사람에게 대신 양보하라고 요청한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 2) 버스에서 큰 소리
+  volumeOnBus: {
+    beginner: {
+      title: "버스에서 조용히",
+      situation: "버스에서 친구와 이야기하고 싶어요.",
+      options: [
+        { id: "a", text: "큰 소리로 떠들어요", is_correct: false },
+        { id: "b", text: "작은 목소리로 짧게 말해요", is_correct: true },
+        { id: "c", text: "전화로 크게 통화해요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "버스에서 이야기할 때",
+      situation: "버스에서 친구와 재미있는 이야기를 하고 싶어요.",
+      options: [
+        { id: "a", text: "큰 소리로 이야기한다", is_correct: false },
+        { id: "b", text: "작은 목소리로 조용히 이야기한다", is_correct: true },
+        { id: "c", text: "스피커폰으로 통화한다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "공공장소 소음 예절",
+      situation: "승객이 많은 버스 안에서 대화를 해야 합니다. 타인의 쾌적함을 고려한 적절한 소통 방식은 무엇일까요?",
+      options: [
+        { id: "a", text: "흥분해서 목소리를 높이며 대화한다", is_correct: false },
+        { id: "b", text: "필요한 말만 낮은 음성으로 짧게 전달한다", is_correct: true },
+        { id: "c", text: "주변도 듣게끔 스피커폰을 사용한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 3) 지하철 문 앞 질서
+  subwayDoors: {
+    beginner: {
+      title: "먼저 내리고 타요",
+      situation: "지하철 문이 열렸어요. 내리는 사람이 많아요.",
+      options: [
+        { id: "a", text: "사람을 밀고 먼저 타요", is_correct: false },
+        { id: "b", text: "사람들이 다 내린 뒤에 타요", is_correct: true },
+        { id: "c", text: "문 앞을 막고 서 있어요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "지하철 출입문에서",
+      situation: "지하철 문이 열렸는데 내리는 사람들이 많아요.",
+      options: [
+        { id: "a", text: "사람들을 밀치고 먼저 탄다", is_correct: false },
+        { id: "b", text: "내리는 사람을 먼저 보내고 탄다", is_correct: true },
+        { id: "c", text: "문 앞에서 비켜주지 않는다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "승하차 질서 지키기",
+      situation: "혼잡한 플랫폼에서 전동차 문이 열렸습니다. 안전과 효율을 높이기 위한 올바른 승차 절차는 무엇일까요?",
+      options: [
+        { id: "a", text: "자리를 선점하려고 먼저 밀고 들어간다", is_correct: false },
+        { id: "b", text: "내리는 승객을 먼저 보내고, 통로를 비켜 서서 대기한 후 탑승한다", is_correct: true },
+        { id: "c", text: "문 바로 앞에서 움직이지 않고 버틴다", is_correct: false }
+      ]
+    }
+  }
+
+
   }
 };
