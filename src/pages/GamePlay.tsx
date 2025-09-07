@@ -193,8 +193,7 @@ const loadScenarios = () => {
     
     setSelectedOption(optionIndex);
     const currentScenario = scenarios[currentScenarioIndex];
-    const correctOption = currentScenario.options.find(opt => opt.is_correct);
-    const isAnswerCorrect = optionIndex === correctOption?.option_order;
+    const isAnswerCorrect = !!currentScenario.options[optionIndex]?.is_correct;
     
     setIsCorrect(isAnswerCorrect);
     setShowResult(true);
