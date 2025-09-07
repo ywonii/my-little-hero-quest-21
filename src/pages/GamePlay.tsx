@@ -147,36 +147,8 @@ const loadScenarios = () => {
     setScenarios(difficultySet);
   } finally {
     setLoading(false);
-   }
- };
-
-
-      const formattedScenarios = data.map(scenario => ({
-        id: scenario.id,
-        title: scenario.title,
-        situation: scenario.situation,
-        options: scenario.scenario_options.sort((a, b) => a.option_order - b.option_order)
-      }));
-
-      // 랜덤하게 섞기
-      const shuffled = [...formattedScenarios].sort(() => Math.random() - 0.5);
-      
-      // 난이도에 맞게 시나리오 조정
-      console.log('Current difficulty level:', difficultyLevel);
-      const adjustedScenarios = adjustScenariosDifficulty(shuffled);
-      console.log('Adjusted scenarios:', adjustedScenarios);
-      setScenarios(adjustedScenarios);
-    } catch (error) {
-      console.error('Error loading scenarios:', error);
-      toast({
-        title: "오류",
-        description: "시나리오를 불러오는 중 오류가 발생했습니다.",
-        variant: "destructive"
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
+  }
+};
 
   const createSampleData = async () => {
     // 테마별 샘플 시나리오 생성 (난이도에 따라)
