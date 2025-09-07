@@ -127,34 +127,29 @@ const GamePlay = () => {
     return text; // intermediate는 원본 유지
   };
 
-  const loadScenarios = async () => {
-    try {
-      setLoading(true);
-      
-      const { data, error } = await supabase
-        .from('scenarios')
-        .select(`
-          id,
-          title,
-          situation,
-          scenario_options (
-            id,
-            text,
-            option_order,
-            is_correct
-          )
-        `)
-        .eq('category', 'main')
-        .eq('theme', theme)
-        .limit(20);
+  import { SCENARIOS } from '@/data/GameScenarios';
 
-      if (error) throw error;
+const loadScenarios = () => {
+  setLoading(true);
+  try {
+    const scenarioSet = SCENARIOS[theme as keyof typeof SCENARIOS];
 
-      if (!data || data.length === 0) {
-        // 샘플 데이터 생성
-        await createSampleData();
-        return;
-      }
+    if (!scenarioSet) {
+      setScenarios([]);
+      return;
+    }
+
+    // 난이도별 선택
+    const difficultySet = Object.values(scenarioSet).map(
+      (scenario: any) => scenario[difficultyLevel]
+    );
+
+    setScenarios(difficultySet);
+  } finally {
+    setLoading(false);
+   }
+ };
+
 
       const formattedScenarios = data.map(scenario => ({
         id: scenario.id,
