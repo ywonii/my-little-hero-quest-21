@@ -1327,7 +1327,15 @@ cleanUp: {
       { id: "a", text: "정리하지 않고 간다", is_correct: false },
       { id: "b", text: "장난감을 제자리에 두고 간다", is_correct: true },
       { id: "c", text: "다른 사람에게 맡긴다", is_correct: false }
-
+]
+  },
+  advanced: {
+    title: "책임 있는 태도",
+    situation: "놀이가 끝난 후 공용 공간에서 바람직한 태도는?",
+    options: [
+      { id: "a", text: "치우지 않고 자리를 떠난다", is_correct: false },
+      { id: "b", text: "정리와 청결을 지키며 물건을 제자리에 둔다", is_correct: true },
+      { id: "c", text: "다른 사람에게 떠넘긴다", is_correct: false }
 
         ]
       }
