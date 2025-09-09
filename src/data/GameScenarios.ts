@@ -562,7 +562,7 @@ export const SCENARIOS = {
       }
     },
     // 18) 친구가 울 때
-comfortCryingFriend: {
+  comfortCryingFriend: {
   beginner: {
     title: "친구가 울어요",
     situation: "쉬는 시간에 지우 친구가 울고 있어요.",
@@ -588,12 +588,12 @@ comfortCryingFriend: {
       { id: "a", text: "놀리며 상황을 가볍게 여긴다", is_correct: false },
       { id: "b", text: "공감하며 위로하고 필요한 도움을 제공한다", is_correct: true },
       { id: "c", text: "외면하고 혼자 두어버린다", is_correct: false }
-    ]
-  }
-},
+      ]
+    }
+  },
 
 // 19) 발표 시간에 다른 친구 듣기
-listenPresentation: {
+  listenPresentation: {
   beginner: {
     title: "친구 발표 듣기",
     situation: "친구가 앞에서 발표하고 있어요.",
@@ -619,11 +619,10 @@ listenPresentation: {
       { id: "a", text: "발표를 방해하며 집중을 흐트러뜨린다", is_correct: false },
       { id: "b", text: "경청하며 발표자의 노력을 존중한다", is_correct: true },
       { id: "c", text: "스스로만 이야기하며 주의를 흩뜨린다", is_correct: false }
-    ]
-  }
-}
-
-  },
+     ]
+   }
+ }
+},
 
   // ===== Transport 테마 (3세트) =====
   transport: {
@@ -722,621 +721,98 @@ listenPresentation: {
   },
 
   // ===== Playground 테마 (3세트) =====
-  // 1) 미끄럼틀 줄서기
-  slideWaiting: {
-  beginner: {
-    title: "미끄럼틀 기다리기",
-    situation: "친구들이 줄 서 있어요. 지우도 타고 싶어요.",
-    options: [
-      { id: "a", text: "줄을 새치기해요", is_correct: false },
-      { id: "b", text: "차례를 기다려요", is_correct: true },
-      { id: "c", text: "친구를 밀고 먼저 타요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "미끄럼틀 차례",
-    situation: "놀이터 미끄럼틀 앞에 줄이 길어요. 지우는 빨리 타고 싶어요.",
-    options: [
-      { id: "a", text: "새치기한다", is_correct: false },
-      { id: "b", text: "차례를 지켜 기다린다", is_correct: true },
-      { id: "c", text: "친구를 밀쳐서 올라간다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "질서 지키기",
-    situation: "놀이기구 이용 규칙을 지키려면 어떻게 해야 할까요?",
-    options: [
-      { id: "a", text: "새치기하며 먼저 탄다", is_correct: false },
-      { id: "b", text: "줄을 서서 차례대로 이용한다", is_correct: true },
-      { id: "c", text: "다른 아이를 방해하며 자리를 뺏는다", is_correct: false }
-    ]
-  }
-},
+  playground: {
+    // 1) 미끄럼틀 줄서기
+    waitingSlide: {
+      beginner: {
+        title: "미끄럼틀 줄서기",
+        situation: "친구들이 줄 서 있어요. 지우는 빨리 타고 싶어요.",
+        options: [
+          { id: "a", text: "줄을 새치기해요", is_correct: false },
+          { id: "b", text: "차례대로 기다려요", is_correct: true },
+          { id: "c", text: "친구를 밀고 먼저 타요", is_correct: false }
+        ]
+      },
+      intermediate: {
+        title: "미끄럼틀 기다릴 때",
+        situation: "놀이터 미끄럼틀에 많은 친구들이 줄을 서 있어요. 지우는 빨리 타고 싶어요.",
+        options: [
+          { id: "a", text: "줄을 새치기한다", is_correct: false },
+          { id: "b", text: "차례를 지켜 기다린다", is_correct: true },
+          { id: "c", text: "다른 친구를 밀쳐서 먼저 탄다", is_correct: false }
+        ]
+      },
+      advanced: {
+        title: "공정한 차례 지키기",
+        situation: "놀이터 미끄럼틀 앞에 긴 줄이 있습니다. 지우는 빨리 타고 싶지만, 공정성과 안전을 고려해야 합니다. 어떤 행동이 가장 바람직할까요?",
+        options: [
+          { id: "a", text: "순서를 무시하고 새치기하여 타버린다", is_correct: false },
+          { id: "b", text: "질서를 지키며 차례를 기다리고, 친구들에게도 차례를 지키자고 말한다", is_correct: true },
+          { id: "c", text: "친구들을 밀어내며 먼저 올라간다", is_correct: false }
+        ]
+      }
+    },
 
-// 2) 그네 타기
-  swingTurn: {
-  beginner: {
-    title: "그네 타고 싶을 때",
-    situation: "친구가 계속 그네를 타고 있어요.",
-    options: [
-      { id: "a", text: "친구를 밀어요", is_correct: false },
-      { id: "b", text: "바꿔 달라고 말해요", is_correct: true },
-      { id: "c", text: "억지로 앉아요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "그네 차례 지키기",
-    situation: "지우는 그네를 타고 싶은데 친구가 계속 타고 있어요.",
-    options: [
-      { id: "a", text: "억지로 앉는다", is_correct: false },
-      { id: "b", text: "교대로 타자고 정중히 말한다", is_correct: true },
-      { id: "c", text: "친구를 밀어내고 차지한다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "놀이기구 사용 규칙",
-    situation: "그네를 오래 사용하는 친구에게 바람직한 요청은?",
-    options: [
-      { id: "a", text: "강제로 내리게 한다", is_correct: false },
-      { id: "b", text: "정중히 교대하자고 요청한다", is_correct: true },
-      { id: "c", text: "자리를 뺏으며 다툰다", is_correct: false }
-    ]
-  }
-},
+    // 2) 그네
+    swing: {
+      beginner: {
+        title: "그네 차례 지키기",
+        situation: "친구가 그네를 계속 타고 있어요. 지우도 타고 싶어요.",
+        options: [
+          { id: "a", text: "그네를 흔들어 내려오게 해요", is_correct: false },
+          { id: "b", text: "친구에게 잠깐 바꿔달라고 해요", is_correct: true },
+          { id: "c", text: "친구를 밀어내고 타요", is_correct: false }
+        ]
+      },
+      intermediate: {
+        title: "그네를 타고 싶을 때",
+        situation: "놀이터에서 지우가 그네를 타고 싶은데, 다른 친구가 계속 타고 있어요.",
+        options: [
+          { id: "a", text: "그네를 흔들어서 친구를 내려오게 한다", is_correct: false },
+          { id: "b", text: "정중하게 잠깐 바꿔 달라고 부탁한다", is_correct: true },
+          { id: "c", text: "친구를 밀어서 그네에서 내리게 한다", is_correct: false }
+        ]
+      },
+      advanced: {
+        title: "공유 놀이기구 사용하기",
+        situation: "놀이터에서 한 친구가 오랫동안 그네를 타고 있습니다. 지우도 타고 싶은데, 어떻게 행동하는 것이 가장 올바를까요?",
+        options: [
+          { id: "a", text: "그네를 강제로 흔들어 친구를 불편하게 만든다", is_correct: false },
+          { id: "b", text: "차례를 존중하며 정중하게 교대로 타자고 요청한다", is_correct: true },
+          { id: "c", text: "친구를 밀쳐내고 억지로 자리를 차지한다", is_correct: false }
+        ]
+      }
+    },
 
-// 3) 친구가 다쳤을 때
-  friendInjured: {
-  beginner: {
-    title: "친구가 다쳤어요",
-    situation: "친구가 넘어졌어요. 무릎이 아파 보여요.",
-    options: [
-      { id: "a", text: "그냥 놀아요", is_correct: false },
-      { id: "b", text: "괜찮냐고 물어봐요", is_correct: true },
-      { id: "c", text: "웃어요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "다친 친구",
-    situation: "친구가 놀이기구에서 넘어졌어요.",
-    options: [
-      { id: "a", text: "웃는다", is_correct: false },
-      { id: "b", text: "상태를 확인하고 어른에게 알린다", is_correct: true },
-      { id: "c", text: "친구 잘못이라 말한다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "안전 사고 대처",
-    situation: "놀이 중 친구가 다쳤을 때 올바른 행동은?",
-    options: [
-      { id: "a", text: "장난으로 넘긴다", is_correct: false },
-      { id: "b", text: "부상을 확인하고 즉시 보호자에게 알린다", is_correct: true },
-      { id: "c", text: "책임을 떠넘기며 방관한다", is_correct: false }
-    ]
-  }
-},
-
-// 4) 시소 이용하기
-  seesawPlay: {
-  beginner: {
-    title: "시소 타기",
-    situation: "시소를 타다 친구가 갑자기 내려서 지우가 쿵 했어요.",
-    options: [
-      { id: "a", text: "친구를 때려요", is_correct: false },
-      { id: "b", text: "아프다고 말해요", is_correct: true },
-      { id: "c", text: "똑같이 복수해요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "시소에서 다쳤을 때",
-    situation: "친구가 갑자기 내려 지우가 떨어졌어요.",
-    options: [
-      { id: "a", text: "친구를 때린다", is_correct: false },
-      { id: "b", text: "안전하게 타자고 이야기한다", is_correct: true },
-      { id: "c", text: "복수로 뛰어내린다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "놀이 안전 지키기",
-    situation: "시소를 타다 사고가 나면 어떻게 행동해야 할까요?",
-    options: [
-      { id: "a", text: "화내며 다툰다", is_correct: false },
-      { id: "b", text: "안전하게 타는 방법을 설명하며 조심한다", is_correct: true },
-      { id: "c", text: "위험하게 다시 타본다", is_correct: false }
-    ]
-  }
-},
-
-// 5) 놀이 순서 지키기
-  toySharing: {
-  beginner: {
-    title: "장난감 차례",
-    situation: "키즈카페에서 장난감을 같이 쓰고 싶어요.",
-    options: [
-      { id: "a", text: "친구 장난감을 뺏어요", is_correct: false },
-      { id: "b", text: "순서를 기다려요", is_correct: true },
-      { id: "c", text: "몰래 가져와요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "장난감 나눠 쓰기",
-    situation: "친구가 장난감을 쓰고 있어요. 지우도 하고 싶어요.",
-    options: [
-      { id: "a", text: "뺏어 온다", is_correct: false },
-      { id: "b", text: "순서를 기다리거나 같이 하자고 말한다", is_correct: true },
-      { id: "c", text: "몰래 가져간다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "공유 물건 예절",
-    situation: "공용 장난감을 사용할 때 올바른 태도는?",
-    options: [
-      { id: "a", text: "다른 아이 것을 빼앗는다", is_correct: false },
-      { id: "b", text: "차례를 기다리거나 양해를 구한다", is_correct: true },
-      { id: "c", text: "몰래 가져가 사용한다", is_correct: false }
-    ]
-  }
-},
-
-// 6) 키즈카페 음식 규칙
-  foodRules: {
-  beginner: {
-    title: "간식 먹기",
-    situation: "키즈카페에서 음식을 먹고 싶어요.",
-    options: [
-      { id: "a", text: "아무 데서나 먹어요", is_correct: false },
-      { id: "b", text: "허용된 곳에서만 먹어요", is_correct: true },
-      { id: "c", text: "친구에게 막 뿌려요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "키즈카페에서 음식",
-    situation: "놀이터 안에서 간식을 먹고 싶어요.",
-    options: [
-      { id: "a", text: "놀이기구 위에서 먹는다", is_correct: false },
-      { id: "b", text: "정해진 자리에서 먹는다", is_correct: true },
-      { id: "c", text: "친구에게 던지며 장난친다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "위생 지키기",
-    situation: "공공 놀이 공간에서 음식을 먹을 때 규칙은?",
-    options: [
-      { id: "a", text: "아무 데서나 먹는다", is_correct: false },
-      { id: "b", text: "정해진 구역에서만 먹고 청결을 지킨다", is_correct: true },
-      { id: "c", text: "쓰레기를 아무 데나 버린다", is_correct: false }
-    ]
-  }
-},
-// 7) 모래놀이 갈등
-  sandConflict: {
-  beginner: {
-    title: "모래놀이 다툼",
-    situation: "친구가 모래를 지우에게 뿌렸어요.",
-    options: [
-      { id: "a", text: "더 많이 뿌려요", is_correct: false },
-      { id: "b", text: "그만하자고 말해요", is_correct: true },
-      { id: "c", text: "울면서 모래를 발로 차요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "모래놀이 중 다툼",
-    situation: "모래성을 쌓는데 친구가 모래를 뿌립니다.",
-    options: [
-      { id: "a", text: "복수로 더 세게 뿌린다", is_correct: false },
-      { id: "b", text: "그만하자고 말하고 함께 놀 방법을 제안한다", is_correct: true },
-      { id: "c", text: "싸움을 키운다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "갈등 해결 태도",
-    situation: "모래놀이에서 갈등이 생겼을 때 바람직한 대응은?",
-    options: [
-      { id: "a", text: "상대에게 모욕적으로 보복한다", is_correct: false },
-      { id: "b", text: "불편함을 차분히 말하고 안전하게 함께 놀이하는 방안을 찾는다", is_correct: true },
-      { id: "c", text: "상대를 밀치며 다툰다", is_correct: false }
-    ]
-  }
-},
-
-// 8) 길 잃은 아이(키즈카페/놀이터)
-  lostChild: {
-  beginner: {
-    title: "엄마를 잃은 아이",
-    situation: "작은 아이가 울면서 엄마를 찾아요.",
-    options: [
-      { id: "a", text: "그냥 지나가요", is_correct: false },
-      { id: "b", text: "직원이나 어른에게 알려요", is_correct: true },
-      { id: "c", text: "혼자 데리고 멀리 가요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "미아를 봤을 때",
-    situation: "키즈카페에서 아이가 엄마를 찾으며 울어요.",
-    options: [
-      { id: "a", text: "관심 갖지 않는다", is_correct: false },
-      { id: "b", text: "직원/어른에게 즉시 알려 돕는다", is_correct: true },
-      { id: "c", text: "휴대폰으로 찍어 올린다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "안전한 도움 요청",
-    situation: "미아를 발견했을 때 적절한 조치는?",
-    options: [
-      { id: "a", text: "아이 손을 잡고 혼자서 찾아다닌다", is_correct: false },
-      { id: "b", text: "운영 staff나 보호자에게 즉시 알리고 그 자리에서 기다린다", is_correct: true },
-      { id: "c", text: "주변 아이들과 소문을 낸다", is_correct: false }
-    ]
-  }
-},
-
-// 9) 공놀이로 다른 아이 물건 망가짐
-  ballAccident: {
-  beginner: {
-    title: "공놀이 사고",
-    situation: "공이 굴러가서 다른 아이 블록 탑을 무너뜨렸어요.",
-    options: [
-      { id: "a", text: "모른 척해요", is_correct: false },
-      { id: "b", text: "사과하고 같이 다시 쌓아요", is_correct: true },
-      { id: "c", text: "그 아이 탓을 해요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "공놀이 중 실수",
-    situation: "축구공이 다른 아이 작품을 망가뜨렸어요.",
-    options: [
-      { id: "a", text: "도망간다", is_correct: false },
-      { id: "b", text: "사과하고 복구를 도와준다", is_correct: true },
-      { id: "c", text: "상대에게 화낸다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "실수 책임지기",
-    situation: "놀이 중 자신의 실수로 피해가 생겼을 때 올바른 태도는?",
-    options: [
-      { id: "a", text: "책임을 회피한다", is_correct: false },
-      { id: "b", text: "사과하고 원상복구를 함께 도우며 재발을 예방한다", is_correct: true },
-      { id: "c", text: "상대에게 책임을 전가한다", is_correct: false }
-    ]
-  }
-},
-
-// 10) 작은 아이 배려하기
-  careSmallerKids: {
-  beginner: {
-    title: "작은 아이가 있어요",
-    situation: "놀이터에 더 어린 아이가 있어요.",
-    options: [
-      { id: "a", text: "밀어요", is_correct: false },
-      { id: "b", text: "조심히 놀아요", is_correct: true },
-      { id: "c", text: "빨리 비키라고 소리쳐요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "어린 아이와 함께 놀 때",
-    situation: "키즈카페에 더 어린 아이들이 있어요.",
-    options: [
-      { id: "a", text: "세게 뛰며 부딪친다", is_correct: false },
-      { id: "b", text: "속도를 줄이고 안전 거리를 지킨다", is_correct: true },
-      { id: "c", text: "길을 막으며 재촉한다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "연령 차 배려",
-    situation: "연령대가 섞인 공간에서 안전을 위해 필요한 태도는?",
-    options: [
-      { id: "a", text: "자기 속도만 유지하며 돌진한다", is_correct: false },
-      { id: "b", text: "주변을 살피고 속도를 조절하며 작은 아이를 배려한다", is_correct: true },
-      { id: "c", text: "작은 아이에게 이동을 강요한다", is_correct: false }
-    ]
-  }
-},
-
-// 11) 비 온 뒤 젖은 놀이기구
-  wetPlayground: {
-  beginner: {
-    title: "젖은 놀이터",
-    situation: "비가 와서 미끄럼틀이 젖었어요.",
-    options: [
-      { id: "a", text: "그냥 타요", is_correct: false },
-      { id: "b", text: "닦고 조심히 타요", is_correct: true },
-      { id: "c", text: "더 빨리 타려고 달려요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "젖은 놀이기구",
-    situation: "비 온 뒤 놀이기구가 미끄러워요.",
-    options: [
-      { id: "a", text: "아무 준비 없이 탄다", is_correct: false },
-      { id: "b", text: "젖은 부분을 닦고 미끄럼 주의하며 이용한다", is_correct: true },
-      { id: "c", text: "친구를 밀어 시험한다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "미끄럼 사고 예방",
-    situation: "젖은 표면에서의 안전한 이용 방법은?",
-    options: [
-      { id: "a", text: "속도를 높여 빨리 지나간다", is_correct: false },
-      { id: "b", text: "물기를 제거하고 보호장비/주의를 갖춰 천천히 이용한다", is_correct: true },
-      { id: "c", text: "위험성을 무시하고 장난친다", is_correct: false }
-    ]
-  }
-},
-
-// 12) 위험한 행동 말리기
-  stopUnsafePlay: {
-  beginner: {
-    title: "위험해요!",
-    situation: "친구가 난간 위로 올라가요.",
-    options: [
-      { id: "a", text: "같이 올라가요", is_correct: false },
-      { id: "b", text: "위험하다고 말해요", is_correct: true },
-      { id: "c", text: "사진 찍어요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "안전하지 않은 행동",
-    situation: "친구가 놀이기구 위에서 위험하게 장난쳐요.",
-    options: [
-      { id: "a", text: "따라 한다", is_correct: false },
-      { id: "b", text: "위험을 알려 멈추게 하고 어른에게 알린다", is_correct: true },
-      { id: "c", text: "더 과감하게 해보라 한다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "안전 수호자 태도",
-    situation: "위험한 놀이를 목격했을 때 바람직한 대응은?",
-    options: [
-      { id: "a", text: "관심을 끌기 위해 촬영하여 공유한다", is_correct: false },
-      { id: "b", text: "즉시 말려 안전한 방법을 안내하고 관리자에게 알린다", is_correct: true },
-      { id: "c", text: "부추기며 위험을 키운다", is_correct: false }
-    ]
-  }
-},
-// 13) 킥보드 안전
-  kickboardSafety: {
-  beginner: {
-    title: "킥보드 타기",
-    situation: "앞에 작은 아이가 걸어가요.",
-    options: [
-      { id: "a", text: "빨리 가라고 소리쳐요", is_correct: false },
-      { id: "b", text: "속도를 줄이고 양해를 구해요", is_correct: true },
-      { id: "c", text: "그냥 빠르게 지나가요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "킥보드 안전",
-    situation: "놀이터에서 킥보드를 타는데 앞에 어린아이가 있어요.",
-    options: [
-      { id: "a", text: "빨리 비키라고 재촉한다", is_correct: false },
-      { id: "b", text: "속도를 줄이고 '지나갈게요'라고 말한다", is_correct: true },
-      { id: "c", text: "그냥 스쳐 지나간다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "공간 안전 배려",
-    situation: "혼잡한 공간에서 킥보드를 안전하게 타려면?",
-    options: [
-      { id: "a", text: "속도를 유지하고 아이들을 피해간다", is_correct: false },
-      { id: "b", text: "속도를 줄이고 상대에게 양해를 구한다", is_correct: true },
-      { id: "c", text: "빨리 비키라고 큰소리친다", is_correct: false }
-    ]
-  }
-},
-
-// 14) 쓰레기 처리
-  trashClean: {
-  beginner: {
-    title: "쓰레기 주우기",
-    situation: "바닥에 과자 봉지가 있어요.",
-    options: [
-      { id: "a", text: "그냥 둬요", is_correct: false },
-      { id: "b", text: "쓰레기통에 버려요", is_correct: true },
-      { id: "c", text: "발로 차요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "놀이터 쓰레기",
-    situation: "바닥에 쓰레기를 봤을 때 어떻게 해야 할까요?",
-    options: [
-      { id: "a", text: "모른 척한다", is_correct: false },
-      { id: "b", text: "쓰레기통에 버린다", is_correct: true },
-      { id: "c", text: "더럽게 발로 찬다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "환경 지키기",
-    situation: "공용 공간에서 쓰레기를 발견했을 때 바람직한 태도는?",
-    options: [
-      { id: "a", text: "그냥 두고 간다", is_correct: false },
-      { id: "b", text: "치워서 쓰레기통에 버린다", is_correct: true },
-      { id: "c", text: "다른 사람에게 떠넘긴다", is_correct: false }
-    ]
-  }
-},
-
-// 15) 벤치 자리 양보
-  benchSeat: {
-  beginner: {
-    title: "자리 양보",
-    situation: "벤치에서 앉아 있는데 할머니가 오셨어요.",
-    options: [
-      { id: "a", text: "계속 앉아있어요", is_correct: false },
-      { id: "b", text: "자리를 양보해요", is_correct: true },
-      { id: "c", text: "피해버려요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "벤치에서",
-    situation: "놀이터 벤치에 앉아 있는데 어르신이 서 계세요.",
-    options: [
-      { id: "a", text: "모른 척한다", is_correct: false },
-      { id: "b", text: "자리를 양보한다", is_correct: true },
-      { id: "c", text: "자리 차지한다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "어른 공경 태도",
-    situation: "공공장소에서 어르신이 서 계실 때 어떻게 해야 할까요?",
-    options: [
-      { id: "a", text: "내 자리를 고집한다", is_correct: false },
-      { id: "b", text: "자리를 양보하며 존중을 표현한다", is_correct: true },
-      { id: "c", text: "시선을 피하며 외면한다", is_correct: false }
-    ]
-  }
-},
-
-// 16) 반납하기
-  returnToys: {
-  beginner: {
-    title: "장난감 반납",
-    situation: "놀다 쓰던 장난감을 두고 가려 해요.",
-    options: [
-      { id: "a", text: "그냥 두고 가요", is_correct: false },
-      { id: "b", text: "제자리에 돌려놔요", is_correct: true },
-      { id: "c", text: "숨겨놔요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "사용 후 정리",
-    situation: "키즈카페 장난감을 다 쓰면?",
-    options: [
-      { id: "a", text: "그대로 두고 간다", is_correct: false },
-      { id: "b", text: "원래 자리에 반납한다", is_correct: true },
-      { id: "c", text: "다른 데 숨긴다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "공용 물건 정리",
-    situation: "공용 장난감 사용 후 필요한 태도는?",
-    options: [
-      { id: "a", text: "치우지 않고 떠난다", is_correct: false },
-      { id: "b", text: "정리해 제자리에 반납한다", is_correct: true },
-      { id: "c", text: "다른 사람에게 치우게 한다", is_correct: false }
-    ]
-  }
-},
-
-// 17) 순서 다툼
-  fightingForTurn: {
-  beginner: {
-    title: "차례 다툼",
-    situation: "지우와 친구가 먼저 타겠다며 싸워요.",
-    options: [
-      { id: "a", text: "서로 밀어요", is_correct: false },
-      { id: "b", text: "가위바위보 해요", is_correct: true },
-      { id: "c", text: "화내며 울어요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "순서 문제",
-    situation: "놀이기구 차례 때문에 다툼이 생겼어요.",
-    options: [
-      { id: "a", text: "싸운다", is_correct: false },
-      { id: "b", text: "가위바위보 등으로 공정하게 정한다", is_correct: true },
-      { id: "c", text: "소리 지르며 우긴다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "공정한 차례 결정",
-    situation: "차례 때문에 갈등이 있을 때 바람직한 해결 방법은?",
-    options: [
-      { id: "a", text: "힘으로 차지한다", is_correct: false },
-      { id: "b", text: "게임이나 합의로 순서를 정한다", is_correct: true },
-      { id: "c", text: "소리를 높이며 우긴다", is_correct: false }
-    ]
-  }
-},
-
-// 18) 집에 갈 시간
-  goingHome: {
-  beginner: {
-    title: "집에 가자",
-    situation: "엄마가 이제 집에 가자고 해요.",
-    options: [
-      { id: "a", text: "계속 놀아요", is_correct: false },
-      { id: "b", text: "아쉽지만 집에 가요", is_correct: true },
-      { id: "c", text: "울면서 떼 써요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "귀가 시간",
-    situation: "집에 가야 하는데 아직 놀고 싶어요.",
-    options: [
-      { id: "a", text: "계속 버틴다", is_correct: false },
-      { id: "b", text: "규칙을 지키고 집에 간다", is_correct: true },
-      { id: "c", text: "화를 내며 떼쓴다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "규칙 지키기",
-    situation: "귀가 시간에 어른이 부르면 바람직한 태도는?",
-    options: [
-      { id: "a", text: "계속 놀며 반항한다", is_correct: false },
-      { id: "b", text: "놀고 싶은 마음을 참으며 약속을 지킨다", is_correct: true },
-      { id: "c", text: "화를 내며 불순종한다", is_correct: false }
-    ]
-  }
-},
-// 19) 숨바꼭질 안전
-  hideAndSeek: {
-  beginner: {
-    title: "숨바꼭질할 때",
-    situation: "지우가 위험한 곳에 숨으려고 해요.",
-    options: [
-      { id: "a", text: "위험한 데 숨어요", is_correct: false },
-      { id: "b", text: "안전한 데 숨어요", is_correct: true },
-      { id: "c", text: "친구를 밀쳐내요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "숨바꼭질 중",
-    situation: "친구가 미끄러운 계단 밑에 숨어요.",
-    options: [
-      { id: "a", text: "따라 들어간다", is_correct: false },
-      { id: "b", text: "위험하다고 말해 안전한 곳으로 오라고 한다", is_correct: true },
-      { id: "c", text: "그냥 모른 척한다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "놀이 안전 지키기",
-    situation: "숨바꼭질 놀이에서 위험한 장소를 발견했을 때 바람직한 대응은?",
-    options: [
-      { id: "a", text: "위험을 무시하고 놀이를 이어간다", is_correct: false },
-      { id: "b", text: "위험을 알리고 안전한 장소에서 놀이하도록 안내한다", is_correct: true },
-      { id: "c", text: "친구를 부추겨 더 위험하게 숨게 한다", is_correct: false }
-    ]
-  }
-},
-
-// 20) 놀이 공간 정리
-  cleanUp: {
-  beginner: {
-    title: "정리 시간",
-    situation: "놀이가 끝났어요. 장난감이 바닥에 있어요.",
-    options: [
-      { id: "a", text: "그냥 나가요", is_correct: false },
-      { id: "b", text: "장난감을 치워요", is_correct: true },
-      { id: "c", text: "발로 차요", is_correct: false }
-    ]
-  },
-  intermediate: {
-    title: "정리하기",
-    situation: "키즈카페에서 놀다가 집에 갈 시간이 되었어요.",
-    options: [
-      { id: "a", text: "정리하지 않고 간다", is_correct: false },
-      { id: "b", text: "장난감을 제자리에 두고 간다", is_correct: true },
-      { id: "c", text: "다른 사람에게 맡긴다", is_correct: false }
-    ]
-  },
-  advanced: {
-    title: "책임 있는 태도",
-    situation: "놀이가 끝난 후 공용 공간에서 바람직한 태도는?",
-    options: [
-      { id: "a", text: "치우지 않고 자리를 떠난다", is_correct: false },
-      { id: "b", text: "정리와 청결을 지키며 물건을 제자리에 둔다", is_correct: true },
-      { id: "c", text: "다른 사람에게 떠넘긴다", is_correct: false }
-      ]
+    // 3) 다친 친구
+    injuredFriend: {
+      beginner: {
+        title: "친구가 다쳤을 때",
+        situation: "친구가 미끄럼틀에서 넘어졌어요. 무릎이 아파 보여요.",
+        options: [
+          { id: "a", text: "웃으면서 장난쳐요", is_correct: false },
+          { id: "b", text: "괜찮냐고 물어보고 선생님께 말해요", is_correct: true },
+          { id: "c", text: "모른 척하고 그냥 놀아요", is_correct: false }
+        ]
+      },
+      intermediate: {
+        title: "친구가 다쳤을 때",
+        situation: "미끄럼틀에서 친구가 넘어져 무릎을 다쳤어요.",
+        options: [
+          { id: "a", text: "재미있다며 웃는다", is_correct: false },
+          { id: "b", text: "괜찮은지 확인하고 어른에게 알려준다", is_correct: true },
+          { id: "c", text: "다친 것은 자기 잘못이라고 말한다", is_correct: false }
+        ]
+      },
+      advanced: {
+        title: "위험 상황에서 도움 주기",
+        situation: "미끄럼틀에서 친구가 넘어져 부상을 입었습니다. 지우는 어떤 태도로 행동하는 것이 바람직할까요?",
+        options: [
+          { id: "a", text: "웃으며 대수롭지 않게 넘긴다", is_correct: false },
+          { id: "b", text: "친구의 상태를 확인하고, 즉시 교사나 보호자에게 알린다", is_correct: true },
+          { id: "c", text: "친구 잘못이라며 책임을 전가한다", is_correct: false }
+        ]
+      }
     }
-  } 
- }
+  }
 };
