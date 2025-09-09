@@ -625,99 +625,627 @@ export const SCENARIOS = {
 },
 
   // ===== Transport 테마 (3세트) =====
-  transport: {
-    // 1) 자리지키기/양보
-    giveSeat: {
-      beginner: {
-        title: "자리를 양보해요",
-        situation: "지하철에 할머니가 타셨어요. 빈 자리가 없어요.",
-        options: [
-          { id: "a", text: "모른 척해요", is_correct: false },
-          { id: "b", text: "자리를 양보해요", is_correct: true },
-          { id: "c", text: "다른 사람이 하라고 해요", is_correct: false }
-        ]
-      },
-      intermediate: {
-        title: "지하철에서 자리를 양보할 때",
-        situation: "지하철에 할머니가 타셨는데 빈 자리가 없어요.",
-        options: [
-          { id: "a", text: "모른 척하고 앉아 있는다", is_correct: false },
-          { id: "b", text: "자리에서 일어나 양보한다", is_correct: true },
-          { id: "c", text: "다른 사람이 양보할 때까지 기다린다", is_correct: false }
-        ]
-      },
-      advanced: {
-        title: "배려가 필요한 승객을 만났을 때",
-        situation: "혼잡한 지하철에서 거동이 불편한 어르신이 탑승했습니다. 공공 예절과 안전을 고려할 때 가장 바람직한 행동은 무엇일까요?",
-        options: [
-          { id: "a", text: "시선을 피하고 자리를 계속 차지한다", is_correct: false },
-          { id: "b", text: "정중히 양보 의사를 밝히고 자리를 제공한다", is_correct: true },
-          { id: "c", text: "주변 사람에게 대신 양보하라고 요청한다", is_correct: false }
-        ]
-      }
+  // ===== Transport 테마 (1~20세트) =====
+ transport: {
+  // 1) 자리 양보 (어르신/임산부/몸 불편한 분)
+  offerSeat: {
+    beginner: {
+      title: "자리를 양보해요",
+      situation: "버스에 할머니가 타셨어요. 빈자리가 없어요.",
+      options: [
+        { id: "a", text: "모른 척해요", is_correct: false },
+        { id: "b", text: "일어나서 자리를 양보해요", is_correct: true },
+        { id: "c", text: "다른 사람이 하라고 해요", is_correct: false }
+      ]
     },
-
-    // 2) 버스에서 큰 소리
-    volumeOnBus: {
-      beginner: {
-        title: "버스에서 조용히",
-        situation: "버스에서 친구와 이야기하고 싶어요.",
-        options: [
-          { id: "a", text: "큰 소리로 떠들어요", is_correct: false },
-          { id: "b", text: "작은 목소리로 짧게 말해요", is_correct: true },
-          { id: "c", text: "전화로 크게 통화해요", is_correct: false }
-        ]
-      },
-      intermediate: {
-        title: "버스에서 이야기할 때",
-        situation: "버스에서 친구와 재미있는 이야기를 하고 싶어요.",
-        options: [
-          { id: "a", text: "큰 소리로 이야기한다", is_correct: false },
-          { id: "b", text: "작은 목소리로 조용히 이야기한다", is_correct: true },
-          { id: "c", text: "스피커폰으로 통화한다", is_correct: false }
-        ]
-      },
-      advanced: {
-        title: "공공장소 소음 예절",
-        situation: "승객이 많은 버스 안에서 대화를 해야 합니다. 타인의 쾌적함을 고려한 적절한 소통 방식은 무엇일까요?",
-        options: [
-          { id: "a", text: "흥분해서 목소리를 높이며 대화한다", is_correct: false },
-          { id: "b", text: "필요한 말만 낮은 음성으로 짧게 전달한다", is_correct: true },
-          { id: "c", text: "주변도 듣게끔 스피커폰을 사용한다", is_correct: false }
-        ]
-      }
+    intermediate: {
+      title: "필요한 분에게 자리",
+      situation: "임산부 표시가 있는 배지를 본 지우는 어떻게 할까요?",
+      options: [
+        { id: "a", text: "눈을 피한다", is_correct: false },
+        { id: "b", text: "정중히 자리를 권한다", is_correct: true },
+        { id: "c", text: "자리를 더 눕혀 앉는다", is_correct: false }
+      ]
     },
-
-    // 3) 지하철 문 앞 질서
-    subwayDoors: {
-      beginner: {
-        title: "먼저 내리고 타요",
-        situation: "지하철 문이 열렸어요. 내리는 사람이 많아요.",
-        options: [
-          { id: "a", text: "사람을 밀고 먼저 타요", is_correct: false },
-          { id: "b", text: "사람들이 다 내린 뒤에 타요", is_correct: true },
-          { id: "c", text: "문 앞을 막고 서 있어요", is_correct: false }
-        ]
-      },
-      intermediate: {
-        title: "지하철 출입문에서",
-        situation: "지하철 문이 열렸는데 내리는 사람들이 많아요.",
-        options: [
-          { id: "a", text: "사람들을 밀치고 먼저 탄다", is_correct: false },
-          { id: "b", text: "내리는 사람을 먼저 보내고 탄다", is_correct: true },
-          { id: "c", text: "문 앞에서 비켜주지 않는다", is_correct: false }
-        ]
-      },
-      advanced: {
-        title: "승하차 질서 지키기",
-        situation: "혼잡한 플랫폼에서 전동차 문이 열렸습니다. 안전과 효율을 높이기 위한 올바른 승차 절차는 무엇일까요?",
-        options: [
-          { id: "a", text: "자리를 선점하려고 먼저 밀고 들어간다", is_correct: false },
-          { id: "b", text: "내리는 승객을 먼저 보내고, 통로를 비켜 서서 대기한 후 탑승한다", is_correct: true },
-          { id: "c", text: "문 바로 앞에서 움직이지 않고 버틴다", is_correct: false }
-        ]
-      }
+    advanced: {
+      title: "배려 좌석의 의미",
+      situation: "교통약자에게 좌석을 배려해야 하는 이유와 태도는?",
+      options: [
+        { id: "a", text: "피곤하니 무조건 먼저 앉는다", is_correct: false },
+        { id: "b", text: "필요한 분을 우선 고려해 자발적으로 양보한다", is_correct: true },
+        { id: "c", text: "눈치 보이며 외면한다", is_correct: false }
+      ]
     }
+  },
+
+  // 2) 작은 목소리로 대화
+  talkVolume: {
+    beginner: {
+      title: "작은 목소리",
+      situation: "지하철에서 친구와 이야기해요.",
+      options: [
+        { id: "a", text: "큰 소리로 떠들어요", is_correct: false },
+        { id: "b", text: "작은 목소리로 말해요", is_correct: true },
+        { id: "c", text: "노래를 불러요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "대중교통 예절",
+      situation: "다른 승객이 휴식을 취해요.",
+      options: [
+        { id: "a", text: "영상 소리를 크게 튼다", is_correct: false },
+        { id: "b", text: "이어폰을 쓰고 조용히 대화한다", is_correct: true },
+        { id: "c", text: "전화로 크게 웃는다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "공공장소 배려",
+      situation: "혼잡한 지하철에서 소음을 줄이는 바람직한 방법은?",
+      options: [
+        { id: "a", text: "통화·영상 소리를 크게 한다", is_correct: false },
+        { id: "b", text: "볼륨을 줄이고 필요한 말만 조용히 한다", is_correct: true },
+        { id: "c", text: "주변 반응을 시험하듯 더 떠든다", is_correct: false }
+      ]
+    }
+  },
+
+  // 3) 급정거로 부딪혔을 때
+  suddenStopBump: {
+    beginner: {
+      title: "부딪혔을 때",
+      situation: "버스가 멈춰서 옆 사람과 부딪혔어요.",
+      options: [
+        { id: "a", text: "모른 척해요", is_correct: false },
+        { id: "b", text: "미안하다고 말해요", is_correct: true },
+        { id: "c", text: "그 사람을 밀어요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "예의 있게 사과",
+      situation: "급정거로 실수로 발이 닿았어요.",
+      options: [
+        { id: "a", text: "지하철 탓만 한다", is_correct: false },
+        { id: "b", text: "바로 사과하고 조심한다", is_correct: true },
+        { id: "c", text: "다시 밀치며 화낸다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "혼잡 상황의 태도",
+      situation: "혼잡·급정거 등 비의도적 접촉 시 적절한 행동은?",
+      options: [
+        { id: "a", text: "상대를 탓하며 언성을 높인다", is_correct: false },
+        { id: "b", text: "간단히 사과하고 안전히 균형을 잡는다", is_correct: true },
+        { id: "c", text: "보복성 행동을 한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 4) 음식 섭취 예절
+  eatOnBus: {
+    beginner: {
+      title: "버스에서 간식",
+      situation: "버스에서 과자를 먹고 싶어요.",
+      options: [
+        { id: "a", text: "부스러기를 흘리며 먹어요", is_correct: false },
+        { id: "b", text: "다른 사람에게 방해 안 되게 참아요", is_correct: true },
+        { id: "c", text: "냄새 나는 음식을 꺼내요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "냄새·청결",
+      situation: "대중교통에서 음식 섭취는?",
+      options: [
+        { id: "a", text: "강한 냄새 음식도 괜찮다", is_correct: false },
+        { id: "b", text: "규정을 지키고 필요 시 최소화한다", is_correct: true },
+        { id: "c", text: "흘려도 그냥 둔다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "공유공간 위생",
+      situation: "밀폐된 차내에서 먹는 행동의 바람직한 기준은?",
+      options: [
+        { id: "a", text: "냄새·소음 상관없이 먹는다", is_correct: false },
+        { id: "b", text: "필요 시 물·가벼운 것만, 청결을 지킨다", is_correct: true },
+        { id: "c", text: "좌석·바닥에 흘려도 무시한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 5) 교통카드를 놓쳤을 때
+  missingTransitCard: {
+    beginner: {
+      title: "카드 없어요",
+      situation: "버스를 타려는데 교통카드를 안 가져왔어요.",
+      options: [
+        { id: "a", text: "그냥 몰래 타요", is_correct: false },
+        { id: "b", text: "기사님께 말하고 현금으로 내요", is_correct: true },
+        { id: "c", text: "다른 사람 뒤에 숨어 타요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "요금 지불",
+      situation: "교통카드를 분실했을 때 올바른 행동은?",
+      options: [
+        { id: "a", text: "무임승차한다", is_correct: false },
+        { id: "b", text: "대체 지불 방법을 문의한다", is_correct: true },
+        { id: "c", text: "개찰구를 뛰어넘는다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "규정 준수",
+      situation: "요금을 지불할 수 없을 때의 바람직한 태도는?",
+      options: [
+        { id: "a", text: "규정을 무시하고 탑승한다", is_correct: false },
+        { id: "b", text: "직원·기사에게 사정을 알리고 규정대로 처리한다", is_correct: true },
+        { id: "c", text: "다른 승객의 카드를 빌린다", is_correct: false }
+      ]
+    }
+  },
+
+  // 6) 휴대폰·게임 소리
+  gameSoundSubway: {
+    beginner: {
+      title: "소리 끄기",
+      situation: "지하철에서 게임을 해요.",
+      options: [
+        { id: "a", text: "소리를 크게 켜요", is_correct: false },
+        { id: "b", text: "이어폰을 쓰거나 소리를 꺼요", is_correct: true },
+        { id: "c", text: "주변에 들리게 해요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "미디어 예절",
+      situation: "영상·게임을 볼 때는?",
+      options: [
+        { id: "a", text: "스피커로 크게 튼다", is_correct: false },
+        { id: "b", text: "이어폰·무음으로 사용한다", is_correct: true },
+        { id: "c", text: "좌석 전체가 들리게 한다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "소음 최소화",
+      situation: "공간 소음을 줄이는 디지털 사용법은?",
+      options: [
+        { id: "a", text: "알림·벨소리를 최대치로 둔다", is_correct: false },
+        { id: "b", text: "진동·무음과 이어폰을 활용한다", is_correct: true },
+        { id: "c", text: "이어폰 없이 영상 재생한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 7) 임산부 배려석
+  seatForPregnant: {
+    beginner: {
+      title: "임산부 자리",
+      situation: "배가 불러 보이는 아주머니가 타셨어요.",
+      options: [
+        { id: "a", text: "모른 척해요", is_correct: false },
+        { id: "b", text: "자리 양보해요", is_correct: true },
+        { id: "c", text: "다른 칸으로 가요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "배려석 사용",
+      situation: "임산부 배려석에 앉아 있던 지우는?",
+      options: [
+        { id: "a", text: "계속 앉아 있다", is_correct: false },
+        { id: "b", text: "즉시 일어나 자리를 드린다", is_correct: true },
+        { id: "c", text: "눈을 감고 자는 척한다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "우선권 이해",
+      situation: "배려석 정책의 취지와 실천은?",
+      options: [
+        { id: "a", text: "아무나 먼저 앉아도 된다", is_correct: false },
+        { id: "b", text: "필요한 승객에게 우선권을 보장한다", is_correct: true },
+        { id: "c", text: "자리 양보 요청을 무시한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 8) 발을 밟았을 때
+  footSteppedOn: {
+    beginner: {
+      title: "발 밟았어요",
+      situation: "사람이 많아 실수로 발을 밟았어요.",
+      options: [
+        { id: "a", text: "그냥 지나가요", is_correct: false },
+        { id: "b", text: "미안하다고 말해요", is_correct: true },
+        { id: "c", text: "상대 발도 밟아요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "혼잡 매너",
+      situation: "발이 닿았을 때 무엇이 맞을까요?",
+      options: [
+        { id: "a", text: "눈을 흘기며 짜증낸다", is_correct: false },
+        { id: "b", text: "사과하고 거리 두기를 시도한다", is_correct: true },
+        { id: "c", text: "더 세게 밀친다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "갈등 예방",
+      situation: "밀집 공간에서의 우발적 접촉 대응은?",
+      options: [
+        { id: "a", text: "상대를 탓하며 다툰다", is_correct: false },
+        { id: "b", text: "짧게 사과·양해를 구하고 재발을 줄인다", is_correct: true },
+        { id: "c", text: "복수한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 9) 떨어진 물건 부탁하기
+  pickUpDropped: {
+    beginner: {
+      title: "물건 떨어졌어요",
+      situation: "필통이 앞사람 발 밑으로 갔어요.",
+      options: [
+        { id: "a", text: "포기해요", is_correct: false },
+        { id: "b", text: "정중히 주워달라고 말해요", is_correct: true },
+        { id: "c", text: "발로 툭툭 차요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "정중한 요청",
+      situation: "앞사람 공간에 내 물건이 들어갔을 때?",
+      options: [
+        { id: "a", text: "강하게 밀치고 집는다", is_correct: false },
+        { id: "b", text: "양해를 구하고 부탁한다", is_correct: true },
+        { id: "c", text: "소리쳐서 지시한다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "의사소통 매너",
+      situation: "좁은 공간에서 타인에게 도움을 청할 때의 태도는?",
+      options: [
+        { id: "a", text: "무례하게 손을 뻗는다", is_correct: false },
+        { id: "b", text: "상대 공간을 존중하며 부탁한다", is_correct: true },
+        { id: "c", text: "짜증 섞인 말투로 명령한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 10) 먼저 내리게 하기
+  letPassengersExit: {
+    beginner: {
+      title: "먼저 내리게",
+      situation: "지하철 문이 열렸어요. 내리는 사람이 많아요.",
+      options: [
+        { id: "a", text: "밀고 먼저 타요", is_correct: false },
+        { id: "b", text: "다 내리고 타요", is_correct: true },
+        { id: "c", text: "문 앞을 막아요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "승하차 질서",
+      situation: "혼잡역 승·하차 예절은?",
+      options: [
+        { id: "a", text: "타던 사람을 밀어낸다", is_correct: false },
+        { id: "b", text: "하차가 먼저, 그 다음 승차한다", is_correct: true },
+        { id: "c", text: "문 앞에서 버틴다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "흐름 유지",
+      situation: "플랫폼 혼잡을 줄이는 기본 원칙은?",
+      options: [
+        { id: "a", text: "동선과 반대로 움직인다", is_correct: false },
+        { id: "b", text: "하차 우선·대기선 준수로 흐름을 지킨다", is_correct: true },
+        { id: "c", text: "문턱 앞에 정지해 막는다", is_correct: false }
+      ]
+    }
+  },
+
+  // 11) 하차 시 동선·문 막지 않기
+  exitRearDoor: {
+    beginner: {
+      title: "문 앞 비우기",
+      situation: "버스에서 내릴 사람이 있어요.",
+      options: [
+        { id: "a", text: "문 앞을 막아요", is_correct: false },
+        { id: "b", text: "잠깐 비켜줘요", is_correct: true },
+        { id: "c", text: "더 앞에 서 있어요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "하차 동선",
+      situation: "내릴 승객이 다가오면?",
+      options: [
+        { id: "a", text: "자리에서 움직이지 않는다", is_correct: false },
+        { id: "b", text: "통로를 열어주고 이동을 돕는다", is_correct: true },
+        { id: "c", text: "어깨로 막는다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "문턱 정체 방지",
+      situation: "문 앞 체류를 줄이는 에티켓은?",
+      options: [
+        { id: "a", text: "문 앞에서 고정적으로 머문다", is_correct: false },
+        { id: "b", text: "잠시 하차·재승차 또는 안쪽으로 이동한다", is_correct: true },
+        { id: "c", text: "짐으로 문을 막는다", is_correct: false }
+      ]
+    }
+  },
+
+  // 12) 가방 앞으로 메기
+  backpackCarryFront: {
+    beginner: {
+      title: "가방 예절",
+      situation: "가방이 앉은 사람에게 닿아요.",
+      options: [
+        { id: "a", text: "그대로 둬요", is_correct: false },
+        { id: "b", text: "가방을 앞으로 메요", is_correct: true },
+        { id: "c", text: "사람을 밀어요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "공간 배려",
+      situation: "혼잡한 전동차에서 배낭은?",
+      options: [
+        { id: "a", text: "등에 멘 채 휘두른다", is_correct: false },
+        { id: "b", text: "앞으로 메거나 내려서 발밑에 둔다", is_correct: true },
+        { id: "c", text: "좌석 위에 올려둔다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "안전·여유 공간",
+      situation: "혼잡 구간에서 수하물 관리 원칙은?",
+      options: [
+        { id: "a", text: "타인 공간을 침범해도 신경 쓰지 않는다", is_correct: false },
+        { id: "b", text: "앞으로 메거나 옆으로 두어 충돌을 줄인다", is_correct: true },
+        { id: "c", text: "통로를 막아 둔다", is_correct: false }
+      ]
+    }
+  },
+
+  // 13) 어르신 지팡이/유모차 돕기
+  helpElderlyCane: {
+    beginner: {
+      title: "도와드리기",
+      situation: "할아버지가 지팡이를 떨어뜨렸어요.",
+      options: [
+        { id: "a", text: "그냥 둬요", is_correct: false },
+        { id: "b", text: "주워 드려요", is_correct: true },
+        { id: "c", text: "장난쳐요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "배려 행동",
+      situation: "유모차가 승하차하려 해요.",
+      options: [
+        { id: "a", text: "통로를 막는다", is_correct: false },
+        { id: "b", text: "문 옆을 비워 길을 만든다", is_correct: true },
+        { id: "c", text: "밀치며 먼저 탄다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "안전 우선",
+      situation: "보행 보조기·유모차 승객을 만났을 때?",
+      options: [
+        { id: "a", text: "앞질러 비집고 들어간다", is_correct: false },
+        { id: "b", text: "속도를 줄이고 공간을 양보한다", is_correct: true },
+        { id: "c", text: "급하게 밀어 통과시킨다", is_correct: false }
+      ]
+    }
+  },
+
+  // 14) 음악은 이어폰으로
+  musicWithEarphones: {
+    beginner: {
+      title: "이어폰 쓰기",
+      situation: "버스에서 음악을 듣고 싶어요.",
+      options: [
+        { id: "a", text: "스피커로 크게 틀어요", is_correct: false },
+        { id: "b", text: "이어폰을 써요", is_correct: true },
+        { id: "c", text: "박수치며 따라 불러요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "볼륨 조절",
+      situation: "이어폰을 써도 소리가 샙니다.",
+      options: [
+        { id: "a", text: "최대 볼륨으로 듣는다", is_correct: false },
+        { id: "b", text: "볼륨을 낮춰 소음 누출을 줄인다", is_correct: true },
+        { id: "c", text: "주변 상관없이 따라 부른다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "청력·배려",
+      situation: "장시간 이동 시 음악 청취의 바람직한 습관은?",
+      options: [
+        { id: "a", text: "고음량으로 장시간 청취한다", is_correct: false },
+        { id: "b", text: "적정 볼륨을 유지하고 주변을 배려한다", is_correct: true },
+        { id: "c", text: "노래를 합창한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 15) 문 막지 않기(문틈·개찰구)
+  blockingDoors: {
+    beginner: {
+      title: "문 막지 않기",
+      situation: "지하철 문이 닫히려고 해요.",
+      options: [
+        { id: "a", text: "손과 발로 막아요", is_correct: false },
+        { id: "b", text: "다음 차를 기다려요", is_correct: true },
+        { id: "c", text: "문 사이에 서 있어요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "안전 우선",
+      situation: "개찰구·스크린도어를 억지로 막으면?",
+      options: [
+        { id: "a", text: "시간을 벌 수 있다", is_correct: false },
+        { id: "b", text: "고장·사고 위험이 있어 피한다", is_correct: true },
+        { id: "c", text: "모두가 자주 하는 일이다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "설비 보호",
+      situation: "문 막기로 인한 안전·운행 지연을 줄이는 방법은?",
+      options: [
+        { id: "a", text: "닫히는 문을 밀어 연다", is_correct: false },
+        { id: "b", text: "여유를 두고 탑승하며 다음 열차를 이용한다", is_correct: true },
+        { id: "c", text: "문턱에 짐을 둔다", is_correct: false }
+      ]
+    }
+  },
+
+  // 16) 에스컬레이터 안전
+  escalatorSafety: {
+    beginner: {
+      title: "에스컬레이터",
+      situation: "지하철 에스컬레이터를 탈 때예요.",
+      options: [
+        { id: "a", text: "뛰어 올라가요", is_correct: false },
+        { id: "b", text: "손잡이를 잡고 서 있어요", is_correct: true },
+        { id: "c", text: "장난치며 밀어요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "넘어짐 주의",
+      situation: "사람이 많을 때 에스컬레이터 이용은?",
+      options: [
+        { id: "a", text: "달리며 추월한다", is_correct: false },
+        { id: "b", text: "걷지 말고 간격을 유지한다", is_correct: true },
+        { id: "c", text: "손잡이를 잡지 않는다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "시설 안전 수칙",
+      situation: "에스컬레이터에서의 안전 원칙은?",
+      options: [
+        { id: "a", text: "장난·역주행을 해본다", is_correct: false },
+        { id: "b", text: "손잡이 잡고 발선 안쪽에 서서 이용한다", is_correct: true },
+        { id: "c", text: "큰 짐을 들고 뛰어간다", is_correct: false }
+      ]
+    }
+  },
+
+  // 17) 노약자석·우선석 예절
+  prioritySeatRespect: {
+    beginner: {
+      title: "노약자석",
+      situation: "우선석에 앉아 있어요.",
+      options: [
+        { id: "a", text: "게임에 몰두해요", is_correct: false },
+        { id: "b", text: "필요한 분이 보이면 바로 일어나요", is_correct: true },
+        { id: "c", text: "이어폰 끼고 모른 척해요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "우선석 배려",
+      situation: "몸이 불편해 보이는 분이 다가와요.",
+      options: [
+        { id: "a", text: "눈을 피한다", is_correct: false },
+        { id: "b", text: "먼저 자리 양보를 제안한다", is_correct: true },
+        { id: "c", text: "자리를 더 차지한다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "사회적 약자 배려",
+      situation: "우선석 운용의 취지에 맞는 행동은?",
+      options: [
+        { id: "a", text: "눈치만 보고 비켜주지 않는다", is_correct: false },
+        { id: "b", text: "필요한 분의 이용을 돕고 스스로 이동한다", is_correct: true },
+        { id: "c", text: "짐을 올려두고 점유한다", is_correct: false }
+      ]
+    }
+  },
+
+  // 18) 플랫폼 줄 서기
+  queueAtPlatform: {
+    beginner: {
+      title: "줄 서요",
+      situation: "지하철 칸 앞 바닥에 줄 서는 표시가 있어요.",
+      options: [
+        { id: "a", text: "표시를 무시해요", is_correct: false },
+        { id: "b", text: "줄 표시를 보고 서요", is_correct: true },
+        { id: "c", text: "새치기해요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "질서 지키기",
+      situation: "대기선과 화살표가 보일 때?",
+      options: [
+        { id: "a", text: "문 정면을 막는다", is_correct: false },
+        { id: "b", text: "표시선에 맞춰 양옆으로 줄 선다", is_correct: true },
+        { id: "c", text: "틈새로 끼어든다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "혼잡 완화",
+      situation: "플랫폼 혼잡을 줄이는 기본 질서는?",
+      options: [
+        { id: "a", text: "표시를 무시하고 임의로 선다", is_correct: false },
+        { id: "b", text: "대기선·하차 공간을 구분해 선다", is_correct: true },
+        { id: "c", text: "새치기로 흐름을 깨뜨린다", is_correct: false }
+      ]
+    }
+  },
+
+  // 19) 기침 예절/마스크
+  coughEtiquetteTransit: {
+    beginner: {
+      title: "기침 나올 때",
+      situation: "지하철에서 기침이 나와요.",
+      options: [
+        { id: "a", text: "가리지 않고 기침해요", is_correct: false },
+        { id: "b", text: "마스크 쓰거나 옷소매로 가려요", is_correct: true },
+        { id: "c", text: "사람 쪽으로 고개 돌려요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "기침 예절",
+      situation: "혼잡한 대중교통에서 기침할 때는?",
+      options: [
+        { id: "a", text: "손도 안 가리고 기침한다", is_correct: false },
+        { id: "b", text: "기침 예절을 지키고 사람 많은 곳은 피한다", is_correct: true },
+        { id: "c", text: "계속 큰 기침 소리를 낸다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "감염 예방",
+      situation: "밀폐된 차내에서의 위생적 행동은?",
+      options: [
+        { id: "a", text: "기침·재채기를 가리지 않는다", is_correct: false },
+        { id: "b", text: "마스크·소매로 가리고 손 위생을 지킨다", is_correct: true },
+        { id: "c", text: "좌석·기둥을 만진 손을 그대로 둔다", is_correct: false }
+      ]
+    }
+  },
+
+  // 20) 길을 잃었을 때 도움 요청
+  lostWayTransfer: {
+    beginner: {
+      title: "길을 몰라요",
+      situation: "환승역에서 어디로 가야 할지 몰라요.",
+      options: [
+        { id: "a", text: "아무 데나 가요", is_correct: false },
+        { id: "b", text: "역무원에게 물어봐요", is_correct: true },
+        { id: "c", text: "사람을 밀치고 가요", is_correct: false }
+      ]
+    },
+    intermediate: {
+      title: "안내 찾기",
+      situation: "길을 잃었을 때 바람직한 방법은?",
+      options: [
+        { id: "a", text: "출구로 나가 다시 표를 산다", is_correct: false },
+        { id: "b", text: "안내 표지/역무원에게 문의한다", is_correct: true },
+        { id: "c", text: "아무 열차나 탄다", is_correct: false }
+      ]
+    },
+    advanced: {
+      title: "문제해결 태도",
+      situation: "복잡한 환승에서 효율적으로 길을 찾는 방법은?",
+      options: [
+        { id: "a", text: "감으로 이동하며 시간을 낭비한다", is_correct: false },
+        { id: "b", text: "노선도·표지·안내를 활용해 확인한다", is_correct: true },
+        { id: "c", text: "사람 흐름만 따라간다", is_correct: false }
+       ]
+     }
+   }
   },
 
   // ===== Playground 테마 (3세트) =====
