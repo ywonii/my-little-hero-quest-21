@@ -1093,7 +1093,7 @@ listenPresentation: {
   }
 },
 // 13) 킥보드 안전
-kickboardSafety: {
+  kickboardSafety: {
   beginner: {
     title: "킥보드 타기",
     situation: "앞에 작은 아이가 걸어가요.",
@@ -1338,4 +1338,5 @@ kickboardSafety: {
       ]
     }
   } 
+ }
 };
