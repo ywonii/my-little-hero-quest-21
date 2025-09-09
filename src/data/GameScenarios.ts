@@ -1247,8 +1247,9 @@ export const SCENARIOS = {
      }
    }
   },
+
   // ===== Library 테마 (1~10세트) =====
-  library: {
+ library: {
   // 1) 도서관에서 조용히 하기
   keepQuiet: {
     beginner: {
@@ -1555,11 +1556,10 @@ export const SCENARIOS = {
         { id: "a", text: "일반 열람실에서 시끄럽게 토론한다", is_correct: false },
         { id: "b", text: "예약된 스터디룸을 활용한다", is_correct: true },
         { id: "c", text: "다른 이용자에게 방해가 되도록 떠든다", is_correct: false }
-       ]
-     }
-   }
+      ]
+    }
+  }
  },
-
 
   // ===== Playground 테마 (3세트) =====
   playground: {
