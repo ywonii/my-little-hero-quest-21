@@ -560,7 +560,69 @@ export const SCENARIOS = {
           { id: "c", text: "아무 기준 없이 선택한다", is_correct: false }
         ]
       }
-    }
+    },
+    // 18) 친구가 울 때
+comfortCryingFriend: {
+  beginner: {
+    title: "친구가 울어요",
+    situation: "쉬는 시간에 지우 친구가 울고 있어요.",
+    options: [
+      { id: "a", text: "놀려요", is_correct: false },
+      { id: "b", text: "괜찮냐고 물어보고 위로해요", is_correct: true },
+      { id: "c", text: "그냥 지나가요", is_correct: false }
+    ]
+  },
+  intermediate: {
+    title: "친구 위로하기",
+    situation: "친구가 속상해서 울고 있어요.",
+    options: [
+      { id: "a", text: "다른 사람들에게 떠벌린다", is_correct: false },
+      { id: "b", text: "다가가서 위로하고 도와준다", is_correct: true },
+      { id: "c", text: "그냥 무시한다", is_correct: false }
+    ]
+  },
+  advanced: {
+    title: "공감과 배려",
+    situation: "친구가 힘들어 울고 있을 때 바람직한 태도는?",
+    options: [
+      { id: "a", text: "놀리며 상황을 가볍게 여긴다", is_correct: false },
+      { id: "b", text: "공감하며 위로하고 필요한 도움을 제공한다", is_correct: true },
+      { id: "c", text: "외면하고 혼자 두어버린다", is_correct: false }
+    ]
+  }
+},
+
+// 19) 발표 시간에 다른 친구 듣기
+listenPresentation: {
+  beginner: {
+    title: "친구 발표 듣기",
+    situation: "친구가 앞에서 발표하고 있어요.",
+    options: [
+      { id: "a", text: "떠들어요", is_correct: false },
+      { id: "b", text: "조용히 들어요", is_correct: true },
+      { id: "c", text: "장난쳐요", is_correct: false }
+    ]
+  },
+  intermediate: {
+    title: "발표 예절",
+    situation: "친구가 발표하는 동안 어떻게 해야 할까요?",
+    options: [
+      { id: "a", text: "잡담을 한다", is_correct: false },
+      { id: "b", text: "경청하며 집중한다", is_correct: true },
+      { id: "c", text: "웃으며 방해한다", is_correct: false }
+    ]
+  },
+  advanced: {
+    title: "발표 존중 태도",
+    situation: "타인의 발표 시간에 청중으로서 지켜야 할 태도는?",
+    options: [
+      { id: "a", text: "발표를 방해하며 집중을 흐트러뜨린다", is_correct: false },
+      { id: "b", text: "경청하며 발표자의 노력을 존중한다", is_correct: true },
+      { id: "c", text: "스스로만 이야기하며 주의를 흩뜨린다", is_correct: false }
+    ]
+  }
+}
+
   },
 
   // ===== Transport 테마 (3세트) =====
