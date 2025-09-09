@@ -562,7 +562,7 @@ export const SCENARIOS = {
       }
     },
     // 18) 친구가 울 때
-  comfortCryingFriend: {
+comfortCryingFriend: {
   beginner: {
     title: "친구가 울어요",
     situation: "쉬는 시간에 지우 친구가 울고 있어요.",
@@ -588,12 +588,12 @@ export const SCENARIOS = {
       { id: "a", text: "놀리며 상황을 가볍게 여긴다", is_correct: false },
       { id: "b", text: "공감하며 위로하고 필요한 도움을 제공한다", is_correct: true },
       { id: "c", text: "외면하고 혼자 두어버린다", is_correct: false }
-      ]
-    }
-  },
+    ]
+  }
+},
 
 // 19) 발표 시간에 다른 친구 듣기
-  listenPresentation: {
+listenPresentation: {
   beginner: {
     title: "친구 발표 듣기",
     situation: "친구가 앞에서 발표하고 있어요.",
@@ -619,10 +619,11 @@ export const SCENARIOS = {
       { id: "a", text: "발표를 방해하며 집중을 흐트러뜨린다", is_correct: false },
       { id: "b", text: "경청하며 발표자의 노력을 존중한다", is_correct: true },
       { id: "c", text: "스스로만 이야기하며 주의를 흩뜨린다", is_correct: false }
-     ]
-   }
- }
-},
+    ]
+  }
+}
+
+  },
 
   // ===== Transport 테마 (3세트) =====
   transport: {
@@ -721,7 +722,193 @@ export const SCENARIOS = {
   },
 
   // ===== Playground 테마 (3세트) =====
-  playground: {
+  playground: {// 1) 미끄럼틀 줄서기
+  slideWaiting: {
+    beginner: {
+      title: "미끄럼틀 기다리기",
+      situation: "친구들이 줄 서 있어요. 지우도 타고 싶어요.",
+      options: [
+      { id: "a", text: "줄을 새치기해요", is_correct: false },
+      { id: "b", text: "차례를 기다려요", is_correct: true },
+      { id: "c", text: "친구를 밀고 먼저 타요", is_correct: false }
+      ]
+    },
+  intermediate: {
+    title: "미끄럼틀 차례",
+    situation: "놀이터 미끄럼틀 앞에 줄이 길어요. 지우는 빨리 타고 싶어요.",
+    options: [
+      { id: "a", text: "새치기한다", is_correct: false },
+      { id: "b", text: "차례를 지켜 기다린다", is_correct: true },
+      { id: "c", text: "친구를 밀쳐서 올라간다", is_correct: false }
+    ]
+  },
+  advanced: {
+    title: "질서 지키기",
+    situation: "놀이기구 이용 규칙을 지키려면 어떻게 해야 할까요?",
+    options: [
+      { id: "a", text: "새치기하며 먼저 탄다", is_correct: false },
+      { id: "b", text: "줄을 서서 차례대로 이용한다", is_correct: true },
+      { id: "c", text: "다른 아이를 방해하며 자리를 뺏는다", is_correct: false }
+      ]
+    }
+  },
+
+// 2) 그네 타기
+  swingTurn: {
+  beginner: {
+    title: "그네 타고 싶을 때",
+    situation: "친구가 계속 그네를 타고 있어요.",
+    options: [
+      { id: "a", text: "친구를 밀어요", is_correct: false },
+      { id: "b", text: "바꿔 달라고 말해요", is_correct: true },
+      { id: "c", text: "억지로 앉아요", is_correct: false }
+    ]
+  },
+  intermediate: {
+    title: "그네 차례 지키기",
+    situation: "지우는 그네를 타고 싶은데 친구가 계속 타고 있어요.",
+    options: [
+      { id: "a", text: "억지로 앉는다", is_correct: false },
+      { id: "b", text: "교대로 타자고 정중히 말한다", is_correct: true },
+      { id: "c", text: "친구를 밀어내고 차지한다", is_correct: false }
+    ]
+  },
+  advanced: {
+    title: "놀이기구 사용 규칙",
+    situation: "그네를 오래 사용하는 친구에게 바람직한 요청은?",
+    options: [
+      { id: "a", text: "강제로 내리게 한다", is_correct: false },
+      { id: "b", text: "정중히 교대하자고 요청한다", is_correct: true },
+      { id: "c", text: "자리를 뺏으며 다툰다", is_correct: false }
+      ]
+    }
+  },
+
+// 3) 친구가 다쳤을 때
+  friendInjured: {
+  beginner: {
+    title: "친구가 다쳤어요",
+    situation: "친구가 넘어졌어요. 무릎이 아파 보여요.",
+    options: [
+      { id: "a", text: "그냥 놀아요", is_correct: false },
+      { id: "b", text: "괜찮냐고 물어봐요", is_correct: true },
+      { id: "c", text: "웃어요", is_correct: false }
+    ]
+  },
+  intermediate: {
+    title: "다친 친구",
+    situation: "친구가 놀이기구에서 넘어졌어요.",
+    options: [
+      { id: "a", text: "웃는다", is_correct: false },
+      { id: "b", text: "상태를 확인하고 어른에게 알린다", is_correct: true },
+      { id: "c", text: "친구 잘못이라 말한다", is_correct: false }
+    ]
+  },
+  advanced: {
+    title: "안전 사고 대처",
+    situation: "놀이 중 친구가 다쳤을 때 올바른 행동은?",
+    options: [
+      { id: "a", text: "장난으로 넘긴다", is_correct: false },
+      { id: "b", text: "부상을 확인하고 즉시 보호자에게 알린다", is_correct: true },
+      { id: "c", text: "책임을 떠넘기며 방관한다", is_correct: false }
+      ]
+    }
+  },
+
+// 4) 시소 이용하기
+  seesawPlay: {
+  beginner: {
+    title: "시소 타기",
+    situation: "시소를 타다 친구가 갑자기 내려서 지우가 쿵 했어요.",
+    options: [
+      { id: "a", text: "친구를 때려요", is_correct: false },
+      { id: "b", text: "아프다고 말해요", is_correct: true },
+      { id: "c", text: "똑같이 복수해요", is_correct: false }
+    ]
+  },
+  intermediate: {
+    title: "시소에서 다쳤을 때",
+    situation: "친구가 갑자기 내려 지우가 떨어졌어요.",
+    options: [
+      { id: "a", text: "친구를 때린다", is_correct: false },
+      { id: "b", text: "안전하게 타자고 이야기한다", is_correct: true },
+      { id: "c", text: "복수로 뛰어내린다", is_correct: false }
+    ]
+  },
+  advanced: {
+    title: "놀이 안전 지키기",
+    situation: "시소를 타다 사고가 나면 어떻게 행동해야 할까요?",
+    options: [
+      { id: "a", text: "화내며 다툰다", is_correct: false },
+      { id: "b", text: "안전하게 타는 방법을 설명하며 조심한다", is_correct: true },
+      { id: "c", text: "위험하게 다시 타본다", is_correct: false }
+      ]
+    }
+  },
+
+// 5) 놀이 순서 지키기
+  toySharing: {
+  beginner: {
+    title: "장난감 차례",
+    situation: "키즈카페에서 장난감을 같이 쓰고 싶어요.",
+    options: [
+      { id: "a", text: "친구 장난감을 뺏어요", is_correct: false },
+      { id: "b", text: "순서를 기다려요", is_correct: true },
+      { id: "c", text: "몰래 가져와요", is_correct: false }
+    ]
+  },
+  intermediate: {
+    title: "장난감 나눠 쓰기",
+    situation: "친구가 장난감을 쓰고 있어요. 지우도 하고 싶어요.",
+    options: [
+      { id: "a", text: "뺏어 온다", is_correct: false },
+      { id: "b", text: "순서를 기다리거나 같이 하자고 말한다", is_correct: true },
+      { id: "c", text: "몰래 가져간다", is_correct: false }
+    ]
+  },
+  advanced: {
+    title: "공유 물건 예절",
+    situation: "공용 장난감을 사용할 때 올바른 태도는?",
+    options: [
+      { id: "a", text: "다른 아이 것을 빼앗는다", is_correct: false },
+      { id: "b", text: "차례를 기다리거나 양해를 구한다", is_correct: true },
+      { id: "c", text: "몰래 가져가 사용한다", is_correct: false }
+      ]
+    }
+  },
+
+// 6) 키즈카페 음식 규칙
+  foodRules: {
+  beginner: {
+    title: "간식 먹기",
+    situation: "키즈카페에서 음식을 먹고 싶어요.",
+    options: [
+      { id: "a", text: "아무 데서나 먹어요", is_correct: false },
+      { id: "b", text: "허용된 곳에서만 먹어요", is_correct: true },
+      { id: "c", text: "친구에게 막 뿌려요", is_correct: false }
+    ]
+  },
+  intermediate: {
+    title: "키즈카페에서 음식",
+    situation: "놀이터 안에서 간식을 먹고 싶어요.",
+    options: [
+      { id: "a", text: "놀이기구 위에서 먹는다", is_correct: false },
+      { id: "b", text: "정해진 자리에서 먹는다", is_correct: true },
+      { id: "c", text: "친구에게 던지며 장난친다", is_correct: false }
+    ]
+  },
+  advanced: {
+    title: "위생 지키기",
+    situation: "공공 놀이 공간에서 음식을 먹을 때 규칙은?",
+    options: [
+      { id: "a", text: "아무 데서나 먹는다", is_correct: false },
+      { id: "b", text: "정해진 구역에서만 먹고 청결을 지킨다", is_correct: true },
+      { id: "c", text: "쓰레기를 아무 데나 버린다", is_correct: false }
+      ]
+    }
+  },
+
+    
     // 1) 미끄럼틀 줄서기
     waitingSlide: {
       beginner: {
