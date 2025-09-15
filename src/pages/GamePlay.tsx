@@ -129,44 +129,80 @@ const GamePlay = () => {
   };
 
 
-const loadScenarios = () => {
+const loadScenarios = async () => {
   try {
     setLoading(true);
 
-    // theme에 맞는 시나리오 묶음 찾기
-    const themeKey = (theme as keyof typeof SCENARIOS) || 'school';
-    const scenarioSet = SCENARIOS[themeKey];
+    // Supabase에서 메인 카테고리 + 현재 테마의 시나리오 불러오기
+    const { data, error } = await supabase
+      .from('scenarios')
+      .select(`
+        id,
+        title,
+        situation,
+        scenario_options (
+          id,
+          text,
+          option_order,
+          is_correct
+        )
+      `)
+      .eq('category', 'main')
+      .eq('theme', theme);
 
-    if (!scenarioSet) {
-      setScenarios([]);
+    if (error) throw error;
+
+    // 데이터가 없으면 샘플 데이터 생성 후 재조회
+    if (!data || data.length === 0) {
+      await createSampleData();
+
+      const { data: seeded, error: seededErr } = await supabase
+        .from('scenarios')
+        .select(`
+          id,
+          title,
+          situation,
+          scenario_options (
+            id,
+            text,
+            option_order,
+            is_correct
+          )
+        `)
+        .eq('category', 'main')
+        .eq('theme', theme);
+
+      if (seededErr) throw seededErr;
+
+      const formattedSeeded = (seeded || []).map((scenario: any) => ({
+        id: scenario.id,
+        title: adjustTextByDifficulty(scenario.title, 'title'),
+        situation: adjustTextByDifficulty(scenario.situation, 'situation'),
+        options: scenario.scenario_options
+          .sort((a: any, b: any) => a.option_order - b.option_order)
+          .map((opt: any) => ({
+            ...opt,
+            text: adjustTextByDifficulty(opt.text, 'option'),
+          })),
+      }));
+
+      setScenarios(formattedSeeded);
       return;
     }
 
-    // 난이도(beginner/intermediate/advanced)에 맞는 항목만 추출
-    const picked = Object.values(scenarioSet).map((one: any) => one[difficultyLevel]);
+    const formatted = data.map((scenario: any) => ({
+      id: scenario.id,
+      title: adjustTextByDifficulty(scenario.title, 'title'),
+      situation: adjustTextByDifficulty(scenario.situation, 'situation'),
+      options: scenario.scenario_options
+        .sort((a: any, b: any) => a.option_order - b.option_order)
+        .map((opt: any) => ({
+          ...opt,
+          text: adjustTextByDifficulty(opt.text, 'option'),
+        })),
+    }));
 
-    // option_order 채우기 + 선택지 섞기
-    const withRandomizedOptions = picked.map((s: any) => {
-      // 먼저 option 기본 형태 정리
-      const baseOpts = s.options.map((opt: any, idx: number) => ({
-        id: opt.id ?? String(idx),
-        text: opt.text,
-        is_correct: !!opt.is_correct,
-        option_order: idx,
-      }));
-
-      // 선택지 섞기 (a/b/c 위치 랜덤)
-      const shuffledOpts = [...baseOpts]
-        .sort(() => Math.random() - 0.5)
-        .map((opt, idx) => ({ ...opt, option_order: idx }));
-
-      return { ...s, options: shuffledOpts };
-    });
-
-    // 문제 순서도 섞고 싶으면 유지, 아니면 제거해도 됨
-    const shuffledQuestions = [...withRandomizedOptions].sort(() => Math.random() - 0.5);
-
-    setScenarios(shuffledQuestions);
+    setScenarios(formatted);
   } catch (e) {
     console.error(e);
   } finally {
