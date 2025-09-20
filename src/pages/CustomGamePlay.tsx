@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
-import { ArrowLeft, Star, RotateCcw, Zap } from 'lucide-react';
+import { ArrowLeft, Star, RotateCcw, Zap, Trash2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -31,6 +31,8 @@ const CustomGamePlay = () => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [loading, setLoading] = useState(true);
   const [difficultyLevel, setDifficultyLevel] = useState<'beginner' | 'intermediate' | 'advanced'>('beginner');
+  const [deleteScenarioDialog, setDeleteScenarioDialog] = useState(false);
+  const [deletingScenario, setDeletingScenario] = useState(false);
 
   const userSession = `session_${Date.now()}`;
   const decodedThemeName = decodeURIComponent(themeName || '');
@@ -248,6 +250,76 @@ const CustomGamePlay = () => {
     setIsCorrect(false);
   };
 
+  const handleDeleteScenario = () => {
+    setDeleteScenarioDialog(true);
+  };
+
+  const handleConfirmDeleteScenario = async () => {
+    if (scenarios.length === 0) return;
+    
+    try {
+      setDeletingScenario(true);
+      const currentScenario = scenarios[currentScenarioIndex];
+
+      // 현재 시나리오의 옵션들 삭제
+      const { error: optionsError } = await supabase
+        .from('scenario_options')
+        .delete()
+        .eq('scenario_id', currentScenario.id);
+
+      if (optionsError) throw optionsError;
+
+      // 시나리오 삭제
+      const { error: scenarioError } = await supabase
+        .from('scenarios')
+        .delete()
+        .eq('id', currentScenario.id);
+
+      if (scenarioError) throw scenarioError;
+
+      // 남은 시나리오들로 업데이트
+      const updatedScenarios = scenarios.filter((_, index) => index !== currentScenarioIndex);
+      setScenarios(updatedScenarios);
+
+      if (updatedScenarios.length === 0) {
+        // 모든 문제가 삭제되면 비밀임무 페이지로 이동
+        toast({
+          title: "문제 삭제 완료",
+          description: "모든 문제가 삭제되었습니다.",
+        });
+        navigate('/secret-mission');
+      } else {
+        // 현재 인덱스 조정
+        const newIndex = currentScenarioIndex >= updatedScenarios.length 
+          ? updatedScenarios.length - 1 
+          : currentScenarioIndex;
+        setCurrentScenarioIndex(newIndex);
+        resetQuestion();
+        
+        toast({
+          title: "문제 삭제 완료",
+          description: "문제가 삭제되었습니다.",
+        });
+      }
+
+      setDeleteScenarioDialog(false);
+
+    } catch (error) {
+      console.error('Error deleting scenario:', error);
+      toast({
+        title: "삭제 실패",
+        description: "문제를 삭제하는 중 오류가 발생했습니다.",
+        variant: "destructive"
+      });
+    } finally {
+      setDeletingScenario(false);
+    }
+  };
+
+  const handleCancelDeleteScenario = () => {
+    setDeleteScenarioDialog(false);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50 p-4 flex items-center justify-center">
@@ -297,7 +369,14 @@ const CustomGamePlay = () => {
               ></div>
             </div>
           </div>
-          <div className="w-10"></div>
+          <Button 
+            variant="ghost" 
+            size="icon"
+            onClick={handleDeleteScenario}
+            className="rounded-full bg-white shadow-md text-red-500 hover:text-red-700 hover:bg-red-50"
+          >
+            <Trash2 size={18} />
+          </Button>
         </div>
 
 
@@ -395,6 +474,55 @@ const CustomGamePlay = () => {
                 </Button>
               </div>
             )}
+          </DialogContent>
+        </Dialog>
+
+        {/* 문제 삭제 확인 다이얼로그 */}
+        <Dialog open={deleteScenarioDialog} onOpenChange={(open) => !open && handleCancelDeleteScenario()}>
+          <DialogContent className="max-w-sm mx-auto">
+            <DialogTitle className="sr-only">
+              문제 삭제 확인
+            </DialogTitle>
+            <DialogDescription className="sr-only">
+              현재 문제를 삭제하시겠습니까?
+            </DialogDescription>
+            <div className="text-center p-4">
+              <div className="text-6xl mb-4 text-red-500">⚠️</div>
+              <p className="font-bold text-lg mb-2 text-red-600">문제 삭제 확인</p>
+              <p className="text-sm text-muted-foreground mb-6">
+                현재 문제를 삭제하시겠습니까?
+                <br />
+                <span className="text-red-600 font-medium">삭제된 문제는 복구할 수 없습니다.</span>
+              </p>
+              <div className="flex gap-2">
+                <Button 
+                  variant="outline"
+                  className="flex-1" 
+                  onClick={handleCancelDeleteScenario}
+                  disabled={deletingScenario}
+                >
+                  취소
+                </Button>
+                <Button 
+                  variant="destructive"
+                  className="flex-1" 
+                  onClick={handleConfirmDeleteScenario}
+                  disabled={deletingScenario}
+                >
+                  {deletingScenario ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
+                      삭제 중...
+                    </>
+                  ) : (
+                    <>
+                      <Trash2 className="mr-2 h-4 w-4" />
+                      삭제
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
           </DialogContent>
         </Dialog>
       </div>
