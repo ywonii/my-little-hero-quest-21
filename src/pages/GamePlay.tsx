@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { ArrowLeft, Star, RotateCcw } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
@@ -419,35 +420,43 @@ const loadScenarios = async () => {
           })}
         </div>
 
-        {/* 결과 및 다음 버튼 */}
-        {showResult && (
-          <Card className="p-4 mb-4">
+        {/* 결과 모달 */}
+        <Dialog open={showResult} onOpenChange={() => {}}>
+          <DialogContent className="max-w-sm mx-auto">
+            <DialogTitle className="sr-only">
+              {isCorrect ? "정답" : "오답"}
+            </DialogTitle>
+            <DialogDescription className="sr-only">
+              {isCorrect ? "정답을 맞혔습니다" : "다시 도전해보세요"}
+            </DialogDescription>
             {isCorrect ? (
-              <div className="text-center text-green-600">
-                <div className="text-4xl mb-2">🎉</div>
-                <p className="font-bold mb-2">정답이에요! 잘했어요!</p>
-                <p className="text-sm text-muted-foreground">다음 문제에 도전해보세요!</p>
+              <div className="text-center text-green-600 p-4">
+                <div className="text-6xl mb-4">🎉</div>
+                <p className="font-bold text-lg mb-2">정답이에요! 잘했어요!</p>
+                <p className="text-sm text-muted-foreground mb-6">다음 문제에 도전해보세요!</p>
+                <Button 
+                  className="w-full" 
+                  onClick={handleNext}
+                >
+                  {currentScenarioIndex < scenarios.length - 1 ? '다음 문제' : '완료'}
+                </Button>
               </div>
             ) : (
-              <div className="text-center text-orange-600">
-                <div className="text-4xl mb-2">💪</div>
-                <p className="font-bold mb-2">다시 한번 생각해봐요!</p>
-                <p className="text-sm text-muted-foreground">정답을 다시 선택해보세요!</p>
+              <div className="text-center text-orange-600 p-4">
+                <div className="text-6xl mb-4">💪</div>
+                <p className="font-bold text-lg mb-2">다시 한번 생각해봐요!</p>
+                <p className="text-sm text-muted-foreground mb-6">정답을 다시 선택해보세요!</p>
+                <Button 
+                  className="w-full" 
+                  onClick={handleNext}
+                >
+                  다시 도전
+                  <RotateCcw className="ml-2" size={16} />
+                </Button>
               </div>
             )}
-            
-            <Button 
-              className="w-full mt-4" 
-              onClick={handleNext}
-            >
-              {isCorrect ? 
-                (currentScenarioIndex < scenarios.length - 1 ? '다음 문제' : '완료') 
-                : '다시 도전'
-              }
-              {!isCorrect && <RotateCcw className="ml-2" size={16} />}
-            </Button>
-          </Card>
-        )}
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
