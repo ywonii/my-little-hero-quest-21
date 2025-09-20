@@ -272,63 +272,63 @@ const CustomGamePlay = () => {
   const currentScenario = scenarios[currentScenarioIndex];
 
   return (
-    <div className="h-screen bg-gradient-to-b from-purple-50 to-pink-50 p-3 flex flex-col overflow-hidden">
-      <div className="max-w-md mx-auto flex flex-col h-full">
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50 p-4">
+      <div className="max-w-md mx-auto">
         {/* 헤더 */}
-        <div className="flex items-center justify-between mb-3 flex-shrink-0">
+        <div className="flex items-center justify-between mb-6">
           <Button 
             variant="ghost" 
             size="icon"
             onClick={() => navigate('/secret-mission')}
             className="rounded-full bg-white shadow-md"
           >
-            <ArrowLeft size={18} />
+            <ArrowLeft size={20} />
           </Button>
           <div className="text-center">
-            <p className="text-xs text-muted-foreground flex items-center gap-1 justify-center">
-              <Zap size={14} className="text-purple-600" />
+            <p className="text-sm text-muted-foreground flex items-center gap-1 justify-center">
+              <Zap size={16} className="text-purple-600" />
               임무 {currentScenarioIndex + 1} / {scenarios.length}
             </p>
-            <div className="w-28 bg-gray-200 rounded-full h-1.5 mt-1">
+            <div className="w-32 bg-gray-200 rounded-full h-2 mt-1">
               <div 
-                className="bg-purple-600 h-1.5 rounded-full transition-all duration-300"
+                className="bg-purple-600 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${((currentScenarioIndex + 1) / scenarios.length) * 100}%` }}
               ></div>
             </div>
           </div>
-          <div className="w-8"></div>
+          <div className="w-10"></div>
         </div>
 
         {/* 테마 정보 */}
-        <Card className="p-2 mb-2 bg-gradient-to-r from-purple-100 to-pink-100 flex-shrink-0">
+        <Card className="p-4 mb-4 bg-gradient-to-r from-purple-100 to-pink-100">
           <div className="text-center">
-            <h2 className="font-bold text-purple-700 text-xs">🕵️ 비밀 임무</h2>
-            <p className="text-xs text-purple-600 truncate">{decodedThemeName}</p>
+            <h2 className="font-bold text-purple-700 text-sm">🕵️ 비밀 임무</h2>
+            <p className="text-xs text-purple-600">{decodedThemeName}</p>
           </div>
         </Card>
 
         {/* 문제 카드 */}
-        <Card className="p-4 mb-3 border-purple-200 flex-shrink-0">
-          <h2 className={`font-bold text-primary mb-2 ${difficultyLevel === 'beginner' ? 'text-base' : 'text-sm'}`}>
+        <Card className="p-6 mb-6 border-purple-200">
+          <h2 className={`font-bold text-primary mb-3 ${difficultyLevel === 'beginner' ? 'text-lg' : difficultyLevel === 'intermediate' ? 'text-base' : 'text-sm'}`}>
             {currentScenario.title}
           </h2>
-          <div className="bg-purple-50 p-3 rounded-lg mb-3 border border-purple-100">
-            <p className={`text-foreground ${difficultyLevel === 'beginner' ? 'text-sm' : 'text-xs'} leading-relaxed`}>
+          <div className="bg-purple-50 p-4 rounded-lg mb-4 border border-purple-100">
+            <p className={`text-foreground ${difficultyLevel === 'beginner' ? 'text-base leading-relaxed' : difficultyLevel === 'intermediate' ? 'text-sm leading-relaxed' : 'text-sm leading-normal'}`}>
               {currentScenario.situation}
             </p>
           </div>
           
-          {/* 일러스트 영역 (컴팩트) */}
-          <div className="bg-gradient-to-br from-purple-100 to-pink-100 p-4 rounded-lg mb-3 text-center">
-            <div className="text-3xl mb-1">🤔</div>
-            <p className="text-xs text-purple-600 font-medium">어떻게 해야 할까요?</p>
+          {/* 일러스트 영역 */}
+          <div className="bg-gradient-to-br from-purple-100 to-pink-100 p-8 rounded-lg mb-4 text-center">
+            <div className="text-6xl mb-2">🤔</div>
+            <p className="text-sm text-purple-600 font-medium">어떻게 해야 할까요?</p>
           </div>
         </Card>
 
         {/* 선택지 */}
-        <div className="space-y-2 mb-3 flex-1 overflow-y-auto">
+        <div className="space-y-3 mb-6">
           {currentScenario.options.map((option, index) => {
-            let buttonClass = "p-3 text-left h-auto border-2 transition-all duration-300";
+            let buttonClass = "p-4 text-left h-auto border-2 transition-all duration-300";
             
             if (showResult) {
               if (option.is_correct) {
@@ -353,12 +353,12 @@ const CustomGamePlay = () => {
                 disabled={showResult}
               >
                 <div className="flex items-start gap-3 w-full">
-                  <span className="font-bold text-purple-600 flex-shrink-0 text-sm">
+                  <span className="font-bold text-purple-600 flex-shrink-0">
                     {String.fromCharCode(97 + index)}.
                   </span>
-                  <span className="text-xs leading-relaxed">{option.text}</span>
+                  <span className={`${difficultyLevel === 'beginner' ? 'text-sm' : 'text-xs'} leading-relaxed`}>{option.text}</span>
                   {showResult && option.is_correct && (
-                    <Star className="text-yellow-500 ml-auto flex-shrink-0" size={14} />
+                    <Star className="text-yellow-500 ml-auto flex-shrink-0" size={16} />
                   )}
                 </div>
               </Button>
@@ -368,31 +368,30 @@ const CustomGamePlay = () => {
 
         {/* 결과 및 다음 버튼 */}
         {showResult && (
-          <Card className="p-3 border-purple-200 flex-shrink-0">
+          <Card className="p-4 mb-4 border-purple-200">
             {isCorrect ? (
               <div className="text-center text-green-600">
-                <div className="text-2xl mb-1">🎉</div>
-                <p className="font-bold mb-1 text-sm">임무 성공! 훌륭해요!</p>
-                <p className="text-xs text-muted-foreground">다음 비밀 임무에 도전해보세요!</p>
+                <div className="text-4xl mb-2">🎉</div>
+                <p className="font-bold mb-2">임무 성공! 훌륭해요!</p>
+                <p className="text-sm text-muted-foreground">다음 비밀 임무에 도전해보세요!</p>
               </div>
             ) : (
               <div className="text-center text-orange-600">
-                <div className="text-2xl mb-1">💪</div>
-                <p className="font-bold mb-1 text-sm">다시 한번 도전해봐요!</p>
-                <p className="text-xs text-muted-foreground">임무를 다시 수행해보세요!</p>
+                <div className="text-4xl mb-2">💪</div>
+                <p className="font-bold mb-2">다시 한번 도전해봐요!</p>
+                <p className="text-sm text-muted-foreground">임무를 다시 수행해보세요!</p>
               </div>
             )}
             
             <Button 
-              className="w-full mt-3 bg-purple-600 hover:bg-purple-700" 
+              className="w-full mt-4 bg-purple-600 hover:bg-purple-700" 
               onClick={handleNext}
-              size="sm"
             >
               {isCorrect ? 
                 (currentScenarioIndex < scenarios.length - 1 ? '다음 임무' : '임무 완료') 
                 : '다시 도전'
               }
-              {!isCorrect && <RotateCcw className="ml-2" size={14} />}
+              {!isCorrect && <RotateCcw className="ml-2" size={16} />}
             </Button>
           </Card>
         )}
