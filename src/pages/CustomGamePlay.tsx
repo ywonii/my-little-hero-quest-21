@@ -300,13 +300,6 @@ const CustomGamePlay = () => {
           <div className="w-10"></div>
         </div>
 
-        {/* 테마 정보 */}
-        <Card className="p-4 mb-4 bg-gradient-to-r from-purple-100 to-pink-100">
-          <div className="text-center">
-            <h2 className="font-bold text-purple-700 text-sm">🕵️ 비밀 임무</h2>
-            <p className="text-xs text-purple-600">{decodedThemeName}</p>
-          </div>
-        </Card>
 
         {/* 문제 카드 */}
         <Card className="p-6 mb-6 border-purple-200">
@@ -329,7 +322,7 @@ const CustomGamePlay = () => {
         {/* 선택지 */}
         <div className="flex flex-col gap-3 mb-6 w-full">
           {currentScenario.options.map((option, index) => {
-            let buttonClass = "p-3 text-left h-auto border-2 transition-all duration-300 w-full max-w-full";
+            let buttonClass = "p-4 text-left h-auto min-h-[60px] border-2 transition-all duration-300 w-full";
             
             if (showResult) {
               if (option.is_correct) {
@@ -353,13 +346,13 @@ const CustomGamePlay = () => {
                 onClick={() => handleOptionSelect(index)}
                 disabled={showResult}
               >
-                <div className="flex items-start gap-2 w-full">
-                  <span className="font-bold text-purple-600 flex-shrink-0 min-w-[20px]">
+                <div className="flex items-start gap-3 w-full min-w-0">
+                  <span className="font-bold text-purple-600 flex-shrink-0 min-w-[20px] mt-0.5">
                     {String.fromCharCode(97 + index)}.
                   </span>
-                  <span className="text-xs leading-relaxed break-words flex-1">{option.text}</span>
+                  <span className="text-sm leading-relaxed break-words whitespace-pre-wrap flex-1 min-w-0">{option.text}</span>
                   {showResult && option.is_correct && (
-                    <Star className="text-yellow-500 ml-auto flex-shrink-0" size={14} />
+                    <Star className="text-yellow-500 flex-shrink-0 mt-0.5" size={16} />
                   )}
                 </div>
               </Button>
