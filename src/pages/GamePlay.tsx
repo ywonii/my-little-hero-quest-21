@@ -379,9 +379,9 @@ const loadScenarios = async () => {
         </Card>
 
         {/* 선택지 */}
-        <div className="space-y-3 mb-6">
+        <div className="flex flex-col gap-3 mb-6 w-full">
           {currentScenario.options.map((option, index) => {
-            let buttonClass = "p-4 text-left h-auto border-2 transition-all duration-300";
+            let buttonClass = "p-3 text-left h-auto border-2 transition-all duration-300 w-full max-w-full";
             
             if (showResult) {
               if (option.is_correct) {
@@ -405,13 +405,13 @@ const loadScenarios = async () => {
                 onClick={() => handleOptionSelect(index)}
                 disabled={showResult}
               >
-                <div className="flex items-start gap-3 w-full">
-                  <span className="font-bold text-primary flex-shrink-0">
+                <div className="flex items-start gap-2 w-full">
+                  <span className="font-bold text-primary flex-shrink-0 min-w-[20px]">
                     {String.fromCharCode(97 + index)}.
                   </span>
-                  <span className="text-sm leading-relaxed">{option.text}</span>
+                  <span className="text-xs leading-relaxed break-words flex-1">{option.text}</span>
                   {showResult && option.is_correct && (
-                    <Star className="text-yellow-500 ml-auto flex-shrink-0" size={16} />
+                    <Star className="text-yellow-500 ml-auto flex-shrink-0" size={14} />
                   )}
                 </div>
               </Button>

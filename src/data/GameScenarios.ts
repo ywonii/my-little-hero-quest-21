@@ -42,8 +42,8 @@ export const SCENARIOS = {
         situation: "친구가 다른 아이들한테 놀림을 받아요.",
         options: [
           { id: "a", text: "모른 척해요", is_correct: false },
-          { id: "b", text: "선생님께 바로 말해요", is_correct: true },
-          { id: "c", text: "같이 놀려요", is_correct: false }
+          { id: "b", text: "같이 놀려요", is_correct: false },
+          { id: "c", text: "선생님께 바로 말해요", is_correct: true }
         ]
       },
       intermediate: {
@@ -72,8 +72,8 @@ export const SCENARIOS = {
         title: "수업시간에 떠들 때",
         situation: "친구가 농담을 해서 웃음이 나와요.",
         options: [
-          { id: "a", text: "큰 소리로 웃어요", is_correct: false },
-          { id: "b", text: "조용히 웃거나 참아요", is_correct: true },
+          { id: "a", text: "조용히 웃거나 참아요", is_correct: true },
+          { id: "b", text: "큰 소리로 웃어요", is_correct: false },
           { id: "c", text: "다른 친구에게 크게 말해요", is_correct: false }
         ]
       },
@@ -104,8 +104,8 @@ export const SCENARIOS = {
         situation: "지우가 연필을 안 가져왔어요.",
         options: [
           { id: "a", text: "친구 연필을 몰래 가져와요", is_correct: false },
-          { id: "b", text: "친구에게 빌려 달라고 해요", is_correct: true },
-          { id: "c", text: "연필 없다고 수업 안 해요", is_correct: false }
+          { id: "b", text: "연필 없다고 수업 안 해요", is_correct: false },
+          { id: "c", text: "친구에게 빌려 달라고 해요", is_correct: true }
         ]
       },
       intermediate: {
@@ -134,8 +134,8 @@ export const SCENARIOS = {
         title: "급식이 싫을 때",
         situation: "브로콜리가 나왔어요. 지우는 싫어요.",
         options: [
-          { id: "a", text: "바닥에 버려요", is_correct: false },
-          { id: "b", text: "조금 먹어 보거나 선생님께 말해요", is_correct: true },
+          { id: "a", text: "조금 먹어 보거나 선생님께 말해요", is_correct: true },
+          { id: "b", text: "바닥에 버려요", is_correct: false },
           { id: "c", text: "친구에게 몰래 떠줘요", is_correct: false }
         ]
       },
@@ -166,8 +166,8 @@ export const SCENARIOS = {
         situation: "시험에서 너무 어려운 문제가 나왔어요.",
         options: [
           { id: "a", text: "옆 친구 답을 봐요", is_correct: false },
-          { id: "b", text: "아는 만큼만 풀어요", is_correct: true },
-          { id: "c", text: "선생님께 화내요", is_correct: false }
+          { id: "b", text: "선생님께 화내요", is_correct: false },
+          { id: "c", text: "아는 만큼만 풀어요", is_correct: true }
         ]
       },
       intermediate: {
@@ -196,8 +196,8 @@ export const SCENARIOS = {
         title: "물건을 망가뜨렸어요",
         situation: "친구 연필을 부러뜨렸어요.",
         options: [
-          { id: "a", text: "모른 척해요", is_correct: false },
-          { id: "b", text: "사과하고 새 것으로 갚겠다고 해요", is_correct: true },
+          { id: "a", text: "사과하고 새 것으로 갚겠다고 해요", is_correct: true },
+          { id: "b", text: "모른 척해요", is_correct: false },
           { id: "c", text: "원래 그랬다고 거짓말해요", is_correct: false }
         ]
       },
@@ -228,8 +228,8 @@ export const SCENARIOS = {
         situation: "청소 시간이에요. 지우는 놀고 싶어요.",
         options: [
           { id: "a", text: "숨어서 안 해요", is_correct: false },
-          { id: "b", text: "내 구역을 깨끗이 해요", is_correct: true },
-          { id: "c", text: "대충 하고 놀러 가요", is_correct: false }
+          { id: "b", text: "대충 하고 놀러 가요", is_correct: false },
+          { id: "c", text: "내 구역을 깨끗이 해요", is_correct: true }
         ]
       },
       intermediate: {
@@ -259,8 +259,8 @@ export const SCENARIOS = {
         situation: "지우가 친구랑 다퉜어요.",
         options: [
           { id: "a", text: "다시는 말 안 해요", is_correct: false },
-          { id: "b", text: "먼저 사과해요", is_correct: true },
-          { id: "c", text: "다른 친구들에게 흉을 봐요", is_correct: false }
+          { id: "b", text: "다른 친구들에게 흉을 봐요", is_correct: false },
+          { id: "c", text: "먼저 사과해요", is_correct: true }
         ]
       },
       intermediate: {
@@ -289,8 +289,8 @@ export const SCENARIOS = {
         title: "선생님께 혼났어요",
         situation: "지우가 실수해서 선생님께 혼났어요.",
         options: [
-          { id: "a", text: "선생님께 화내요", is_correct: false },
-          { id: "b", text: "잘못을 인정해요", is_correct: true },
+          { id: "a", text: "잘못을 인정해요", is_correct: true },
+          { id: "b", text: "선생님께 화내요", is_correct: false },
           { id: "c", text: "친구 탓을 해요", is_correct: false }
         ]
       },
@@ -321,8 +321,8 @@ export const SCENARIOS = {
         situation: "지우가 옆 친구 답을 보고 싶어요.",
         options: [
           { id: "a", text: "슬쩍 봐요", is_correct: false },
-          { id: "b", text: "내 힘으로 풀어요", is_correct: true },
-          { id: "c", text: "시험지를 훔쳐봐요", is_correct: false }
+          { id: "b", text: "시험지를 훔쳐봐요", is_correct: false },
+          { id: "c", text: "내 힘으로 풀어요", is_correct: true }
         ]
       },
       intermediate: {
@@ -351,8 +351,8 @@ export const SCENARIOS = {
         title: "발표할 때",
         situation: "지우 차례가 왔어요. 떨려요.",
         options: [
-          { id: "a", text: "아무 말 안 해요", is_correct: false },
-          { id: "b", text: "용기 내서 발표해요", is_correct: true },
+          { id: "a", text: "용기 내서 발표해요", is_correct: true },
+          { id: "b", text: "아무 말 안 해요", is_correct: false },
           { id: "c", text: "친구를 대신 시켜요", is_correct: false }
         ]
       },
@@ -383,8 +383,8 @@ export const SCENARIOS = {
         situation: "지우 자리 옆에 쓰레기가 있어요. 내가 버린 건 아니에요.",
         options: [
           { id: "a", text: "그냥 둬요", is_correct: false },
-          { id: "b", text: "주워서 쓰레기통에 버려요", is_correct: true },
-          { id: "c", text: "누가 버렸는지 찾아 혼내요", is_correct: false }
+          { id: "b", text: "누가 버렸는지 찾아 혼내요", is_correct: false },
+          { id: "c", text: "주워서 쓰레기통에 버려요", is_correct: true }
         ]
       },
       intermediate: {
@@ -413,8 +413,8 @@ export const SCENARIOS = {
         title: "새 친구 왔어요",
         situation: "오늘 반에 새 친구가 왔어요.",
         options: [
-          { id: "a", text: "모르는 척해요", is_correct: false },
-          { id: "b", text: "먼저 인사하고 같이 놀자고 해요", is_correct: true },
+          { id: "a", text: "먼저 인사하고 같이 놀자고 해요", is_correct: true },
+          { id: "b", text: "모르는 척해요", is_correct: false },
           { id: "c", text: "다른 친구랑 수군거려요", is_correct: false }
         ]
       },
@@ -445,8 +445,8 @@ export const SCENARIOS = {
         situation: "축구팀을 나누는데, 축구를 못하는 친구가 있어요.",
         options: [
           { id: "a", text: "그 친구를 빼요", is_correct: false },
-          { id: "b", text: "같이 하자고 도와줘요", is_correct: true },
-          { id: "c", text: "공 못 잡게 해요", is_correct: false }
+          { id: "b", text: "공 못 잡게 해요", is_correct: false },
+          { id: "c", text: "같이 하자고 도와줘요", is_correct: true }
         ]
       },
       intermediate: {
@@ -476,8 +476,8 @@ export const SCENARIOS = {
         situation: "화장실이 급해요. 복도예요.",
         options: [
           { id: "a", text: "빨리 뛰어가요", is_correct: false },
-          { id: "b", text: "빠르게 걸어가요", is_correct: true },
-          { id: "c", text: "친구를 밀고 지나가요", is_correct: false }
+          { id: "b", text: "친구를 밀고 지나가요", is_correct: false },
+          { id: "c", text: "빠르게 걸어가요", is_correct: true }
         ]
       },
       intermediate: {
@@ -537,8 +537,8 @@ export const SCENARIOS = {
         title: "반장 뽑기",
         situation: "누구를 뽑을까요?",
         options: [
-          { id: "a", text: "친한 친구만 뽑아요", is_correct: false },
-          { id: "b", text: "반을 잘 이끌 친구를 뽑아요", is_correct: true },
+          { id: "a", text: "반을 잘 이끌 친구를 뽑아요", is_correct: true },
+          { id: "b", text: "친한 친구만 뽑아요", is_correct: false },
           { id: "c", text: "아무나 대충 뽑아요", is_correct: false }
         ]
       },
@@ -566,11 +566,11 @@ export const SCENARIOS = {
   beginner: {
     title: "친구가 울어요",
     situation: "쉬는 시간에 지우 친구가 울고 있어요.",
-    options: [
-      { id: "a", text: "놀려요", is_correct: false },
-      { id: "b", text: "괜찮냐고 물어보고 위로해요", is_correct: true },
-      { id: "c", text: "그냥 지나가요", is_correct: false }
-    ]
+        options: [
+          { id: "a", text: "놀려요", is_correct: false },
+          { id: "b", text: "그냥 지나가요", is_correct: false },
+          { id: "c", text: "괜찮냐고 물어보고 위로해요", is_correct: true }
+        ]
   },
   intermediate: {
     title: "친구 위로하기",
@@ -818,11 +818,11 @@ export const SCENARIOS = {
     beginner: {
       title: "임산부 자리",
       situation: "배가 불러 보이는 아주머니가 타셨어요.",
-      options: [
-        { id: "a", text: "모른 척해요", is_correct: false },
-        { id: "b", text: "자리 양보해요", is_correct: true },
-        { id: "c", text: "다른 칸으로 가요", is_correct: false }
-      ]
+        options: [
+          { id: "a", text: "자리 양보해요", is_correct: true },
+          { id: "b", text: "모른 척해요", is_correct: false },
+          { id: "c", text: "다른 칸으로 가요", is_correct: false }
+        ]
     },
     intermediate: {
       title: "배려석 사용",
@@ -849,11 +849,11 @@ export const SCENARIOS = {
     beginner: {
       title: "발 밟았어요",
       situation: "사람이 많아 실수로 발을 밟았어요.",
-      options: [
-        { id: "a", text: "그냥 지나가요", is_correct: false },
-        { id: "b", text: "미안하다고 말해요", is_correct: true },
-        { id: "c", text: "상대 발도 밟아요", is_correct: false }
-      ]
+        options: [
+          { id: "a", text: "그냥 지나가요", is_correct: false },
+          { id: "b", text: "상대 발도 밟아요", is_correct: false },
+          { id: "c", text: "미안하다고 말해요", is_correct: true }
+        ]
     },
     intermediate: {
       title: "혼잡 매너",
@@ -880,11 +880,11 @@ export const SCENARIOS = {
     beginner: {
       title: "물건 떨어졌어요",
       situation: "필통이 앞사람 발 밑으로 갔어요.",
-      options: [
-        { id: "a", text: "포기해요", is_correct: false },
-        { id: "b", text: "정중히 주워달라고 말해요", is_correct: true },
-        { id: "c", text: "발로 툭툭 차요", is_correct: false }
-      ]
+        options: [
+          { id: "a", text: "정중히 주워달라고 말해요", is_correct: true },
+          { id: "b", text: "포기해요", is_correct: false },
+          { id: "c", text: "발로 툭툭 차요", is_correct: false }
+        ]
     },
     intermediate: {
       title: "정중한 요청",
@@ -911,11 +911,11 @@ export const SCENARIOS = {
     beginner: {
       title: "먼저 내리게",
       situation: "지하철 문이 열렸어요. 내리는 사람이 많아요.",
-      options: [
-        { id: "a", text: "밀고 먼저 타요", is_correct: false },
-        { id: "b", text: "다 내리고 타요", is_correct: true },
-        { id: "c", text: "문 앞을 막아요", is_correct: false }
-      ]
+        options: [
+          { id: "a", text: "밀고 먼저 타요", is_correct: false },
+          { id: "b", text: "문 앞을 막아요", is_correct: false },
+          { id: "c", text: "다 내리고 타요", is_correct: true }
+        ]
     },
     intermediate: {
       title: "승하차 질서",
@@ -973,11 +973,11 @@ export const SCENARIOS = {
     beginner: {
       title: "가방 예절",
       situation: "가방이 앉은 사람에게 닿아요.",
-      options: [
-        { id: "a", text: "그대로 둬요", is_correct: false },
-        { id: "b", text: "가방을 앞으로 메요", is_correct: true },
-        { id: "c", text: "사람을 밀어요", is_correct: false }
-      ]
+        options: [
+          { id: "a", text: "가방을 앞으로 메요", is_correct: true },
+          { id: "b", text: "그대로 둬요", is_correct: false },
+          { id: "c", text: "사람을 밀어요", is_correct: false }
+        ]
     },
     intermediate: {
       title: "공간 배려",
