@@ -88,25 +88,19 @@ const SecretMission = () => {
     setDeleteDialog({ open: true, theme });
   };
 
-  const handleConfirmDelete = async () => {
-    if (!deleteDialog.theme) return;
-    
+  const deleteTheme = async (themeId: string, themeName: string) => {
     try {
-      setDeleting(true);
-      const theme = deleteDialog.theme;
-
-      // 테마만 삭제
-      await supabase.from('custom_themes').delete().eq('id', theme.id);
-
-      // 상태 업데이트
-      setThemes(themes.filter(t => t.id !== theme.id));
-      setDeleteDialog({ open: false, theme: null });
-
+      await supabase
+        .from('custom_themes')
+        .delete()
+        .eq('id', themeId);
+      
       toast({
         title: "삭제 완료",
-        description: `'${theme.theme_name}' 테마가 삭제되었습니다.`,
+        description: `'${themeName}' 테마가 삭제되었습니다.`,
       });
-
+      
+      loadCustomThemes();
     } catch (error) {
       console.error('Error deleting theme:', error);
       toast({
@@ -114,9 +108,16 @@ const SecretMission = () => {
         description: "테마를 삭제하는 중 오류가 발생했습니다.",
         variant: "destructive"
       });
-    } finally {
-      setDeleting(false);
     }
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!deleteDialog.theme) return;
+    
+    setDeleting(true);
+    await deleteTheme(deleteDialog.theme.id, deleteDialog.theme.theme_name);
+    setDeleteDialog({ open: false, theme: null });
+    setDeleting(false);
   };
 
   const handleCancelDelete = () => {
