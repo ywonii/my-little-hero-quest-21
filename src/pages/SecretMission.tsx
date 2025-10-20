@@ -105,11 +105,8 @@ const SecretMission = () => {
       if (scenarios && scenarios.length > 0) {
         const scenarioIds = scenarios.map(s => s.id);
         
-        // 옵션과 시나리오 병렬 삭제
-        await Promise.all([
-          supabase.from('scenario_options').delete().in('scenario_id', scenarioIds),
-          supabase.from('scenarios').delete().in('id', scenarioIds)
-        ]);
+        // 시나리오 삭제
+        await supabase.from('scenarios').delete().in('id', scenarioIds);
       }
 
       // 테마 삭제
