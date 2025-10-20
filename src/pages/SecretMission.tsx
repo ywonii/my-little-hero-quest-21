@@ -26,8 +26,6 @@ const SecretMission = () => {
     theme: null
   });
   const [deleting, setDeleting] = useState(false);
-  const [deleteAllDialog, setDeleteAllDialog] = useState(false);
-  const [deletingAll, setDeletingAll] = useState(false);
 
   useEffect(() => {
     loadCustomThemes();
@@ -159,75 +157,6 @@ const SecretMission = () => {
     setDeleteDialog({ open: false, theme: null });
   };
 
-  const handleDeleteAllClick = () => {
-    setDeleteAllDialog(true);
-  };
-
-  const handleConfirmDeleteAll = async () => {
-    try {
-      setDeletingAll(true);
-
-      // 모든 커스텀 테마의 시나리오들 조회
-      const { data: allScenarios, error: scenariosError } = await supabase
-        .from('scenarios')
-        .select('id')
-        .eq('category', 'custom');
-
-      if (scenariosError) throw scenariosError;
-
-      // 모든 시나리오 옵션들 삭제
-      if (allScenarios && allScenarios.length > 0) {
-        const scenarioIds = allScenarios.map(s => s.id);
-        
-        const { error: optionsError } = await supabase
-          .from('scenario_options')
-          .delete()
-          .in('scenario_id', scenarioIds);
-
-        if (optionsError) throw optionsError;
-
-        // 모든 커스텀 시나리오들 삭제
-        const { error: scenariosDeleteError } = await supabase
-          .from('scenarios')
-          .delete()
-          .eq('category', 'custom');
-
-        if (scenariosDeleteError) throw scenariosDeleteError;
-      }
-
-      // 모든 커스텀 테마들 삭제
-      const { error: themesError } = await supabase
-        .from('custom_themes')
-        .delete()
-        .neq('id', '00000000-0000-0000-0000-000000000000'); // 모든 테마 삭제
-
-      if (themesError) throw themesError;
-
-      // 상태 초기화
-      setThemes([]);
-      setDeleteAllDialog(false);
-
-      toast({
-        title: "전체 삭제 완료",
-        description: "모든 비밀 임무 테마와 문제가 삭제되었습니다.",
-      });
-
-    } catch (error) {
-      console.error('Error deleting all themes:', error);
-      toast({
-        title: "삭제 실패",
-        description: "전체 삭제 중 오류가 발생했습니다.",
-        variant: "destructive"
-      });
-    } finally {
-      setDeletingAll(false);
-    }
-  };
-
-  const handleCancelDeleteAll = () => {
-    setDeleteAllDialog(false);
-  };
-
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 p-4 flex items-center justify-center">
@@ -342,73 +271,7 @@ const SecretMission = () => {
             🎮 AI가 만든 특별한 시나리오로 연습해보세요!
           </p>
         </div>
-
-        {/* 전체 삭제 버튼 */}
-        {themes.length > 0 && (
-          <div className="mt-4">
-            <Button
-              variant="destructive"
-              onClick={handleDeleteAllClick}
-              className="w-full"
-              size="sm"
-            >
-              <Trash2 className="mr-2 h-4 w-4" />
-              모든 비밀 임무 삭제
-            </Button>
-          </div>
-        )}
       </div>
-
-      {/* 전체 삭제 확인 다이얼로그 */}
-      <Dialog open={deleteAllDialog} onOpenChange={(open) => !open && handleCancelDeleteAll()}>
-        <DialogContent className="mx-auto max-w-sm">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 text-red-600">
-              <Trash2 size={20} />
-              전체 삭제 확인
-            </DialogTitle>
-            <DialogDescription className="text-left">
-              <strong>모든 비밀 임무</strong>를 삭제하시겠습니까?
-              <br /><br />
-              <span className="text-red-600 font-medium">
-                • 총 {themes.length}개의 테마가 삭제됩니다
-                <br />
-                • 모든 문제들이 함께 삭제됩니다
-                <br />
-                • 삭제된 데이터는 복구할 수 없습니다
-              </span>
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex gap-2 mt-4">
-            <Button
-              variant="outline"
-              onClick={handleCancelDeleteAll}
-              disabled={deletingAll}
-              className="flex-1"
-            >
-              취소
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={handleConfirmDeleteAll}
-              disabled={deletingAll}
-              className="flex-1"
-            >
-              {deletingAll ? (
-                <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
-                  삭제 중...
-                </>
-              ) : (
-                <>
-                  <Trash2 className="mr-2 h-4 w-4" />
-                  전체 삭제
-                </>
-              )}
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
 
       {/* 삭제 확인 다이얼로그 */}
       <Dialog open={deleteDialog.open} onOpenChange={(open) => !open && handleCancelDelete()}>
