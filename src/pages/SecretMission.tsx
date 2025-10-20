@@ -95,21 +95,7 @@ const SecretMission = () => {
       setDeleting(true);
       const theme = deleteDialog.theme;
 
-      // 시나리오 ID들 조회
-      const { data: scenarios } = await supabase
-        .from('scenarios')
-        .select('id')
-        .eq('category', 'custom')
-        .eq('theme', theme.theme_name);
-
-      if (scenarios && scenarios.length > 0) {
-        const scenarioIds = scenarios.map(s => s.id);
-        
-        // 시나리오 삭제
-        await supabase.from('scenarios').delete().in('id', scenarioIds);
-      }
-
-      // 테마 삭제
+      // 테마만 삭제
       await supabase.from('custom_themes').delete().eq('id', theme.id);
 
       // 상태 업데이트
@@ -118,7 +104,7 @@ const SecretMission = () => {
 
       toast({
         title: "삭제 완료",
-        description: `'${theme.theme_name}' 테마와 모든 문제가 삭제되었습니다.`,
+        description: `'${theme.theme_name}' 테마가 삭제되었습니다.`,
       });
 
     } catch (error) {
