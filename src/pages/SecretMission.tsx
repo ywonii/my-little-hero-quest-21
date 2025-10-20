@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogHeader } from '@/components/ui/dialog';
-import { ArrowLeft, Zap, Calendar, X, Trash2 } from 'lucide-react';
+import { ArrowLeft, Zap, Calendar, Trash2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -21,11 +20,6 @@ const SecretMission = () => {
   
   const [themes, setThemes] = useState<CustomTheme[]>([]);
   const [loading, setLoading] = useState(true);
-  const [deleteDialog, setDeleteDialog] = useState<{open: boolean; theme: CustomTheme | null}>({
-    open: false,
-    theme: null
-  });
-  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     loadCustomThemes();
@@ -83,11 +77,6 @@ const SecretMission = () => {
     });
   };
 
-  const handleDeleteClick = (e: React.MouseEvent, theme: CustomTheme) => {
-    e.stopPropagation(); // 카드 클릭 이벤트 방지
-    setDeleteDialog({ open: true, theme });
-  };
-
   const deleteTheme = async (themeId: string, themeName: string) => {
     try {
       await supabase
@@ -109,19 +98,6 @@ const SecretMission = () => {
         variant: "destructive"
       });
     }
-  };
-
-  const handleConfirmDelete = async () => {
-    if (!deleteDialog.theme) return;
-    
-    setDeleting(true);
-    await deleteTheme(deleteDialog.theme.id, deleteDialog.theme.theme_name);
-    setDeleteDialog({ open: false, theme: null });
-    setDeleting(false);
-  };
-
-  const handleCancelDelete = () => {
-    setDeleteDialog({ open: false, theme: null });
   };
 
   if (loading) {
@@ -189,9 +165,12 @@ const SecretMission = () => {
                   variant="ghost"
                   size="icon"
                   className="absolute top-2 right-2 h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50 z-10"
-                  onClick={(e) => handleDeleteClick(e, theme)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteTheme(theme.id, theme.theme_name);
+                  }}
                 >
-                  <X size={16} />
+                  <Trash2 size={16} />
                 </Button>
                 
                 <div className="flex items-start gap-4">
@@ -239,55 +218,6 @@ const SecretMission = () => {
           </p>
         </div>
       </div>
-
-      {/* 삭제 확인 다이얼로그 */}
-      <Dialog open={deleteDialog.open} onOpenChange={(open) => !open && handleCancelDelete()}>
-        <DialogContent className="mx-auto max-w-sm">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 text-red-600">
-              <Trash2 size={20} />
-              테마 삭제 확인
-            </DialogTitle>
-            <DialogDescription className="text-left">
-              <strong>'{deleteDialog.theme?.theme_name}'</strong> 테마를 삭제하시겠습니까?
-              <br /><br />
-              <span className="text-red-600">
-                • 이 테마의 모든 문제({deleteDialog.theme?.scenario_count}개)가 함께 삭제됩니다
-                <br />
-                • 삭제된 데이터는 복구할 수 없습니다
-              </span>
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex gap-2 mt-4">
-            <Button
-              variant="outline"
-              onClick={handleCancelDelete}
-              disabled={deleting}
-              className="flex-1"
-            >
-              취소
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={handleConfirmDelete}
-              disabled={deleting}
-              className="flex-1"
-            >
-              {deleting ? (
-                <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
-                  삭제 중...
-                </>
-              ) : (
-                <>
-                  <Trash2 className="mr-2 h-4 w-4" />
-                  삭제
-                </>
-              )}
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 };
