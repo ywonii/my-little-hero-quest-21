@@ -95,44 +95,27 @@ const SecretMission = () => {
       setDeleting(true);
       const theme = deleteDialog.theme;
 
-      // 1. 해당 테마의 모든 시나리오 조회
-      const { data: scenarios, error: scenariosError } = await supabase
+      // 시나리오 ID들 조회
+      const { data: scenarios } = await supabase
         .from('scenarios')
         .select('id')
         .eq('category', 'custom')
         .eq('theme', theme.theme_name);
 
-      if (scenariosError) throw scenariosError;
-
-      // 2. 각 시나리오의 옵션들 삭제
       if (scenarios && scenarios.length > 0) {
         const scenarioIds = scenarios.map(s => s.id);
         
-        const { error: optionsError } = await supabase
-          .from('scenario_options')
-          .delete()
-          .in('scenario_id', scenarioIds);
-
-        if (optionsError) throw optionsError;
-
-        // 3. 시나리오들 삭제
-        const { error: scenariosDeleteError } = await supabase
-          .from('scenarios')
-          .delete()
-          .in('id', scenarioIds);
-
-        if (scenariosDeleteError) throw scenariosDeleteError;
+        // 옵션과 시나리오 병렬 삭제
+        await Promise.all([
+          supabase.from('scenario_options').delete().in('scenario_id', scenarioIds),
+          supabase.from('scenarios').delete().in('id', scenarioIds)
+        ]);
       }
 
-      // 4. 테마 삭제
-      const { error: themeError } = await supabase
-        .from('custom_themes')
-        .delete()
-        .eq('id', theme.id);
+      // 테마 삭제
+      await supabase.from('custom_themes').delete().eq('id', theme.id);
 
-      if (themeError) throw themeError;
-
-      // 5. 상태 업데이트
+      // 상태 업데이트
       setThemes(themes.filter(t => t.id !== theme.id));
       setDeleteDialog({ open: false, theme: null });
 
