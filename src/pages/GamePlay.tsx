@@ -25,6 +25,16 @@ const GamePlay = () => {
   const { theme } = useParams<{ theme: string }>();
   const { toast } = useToast();
   
+  // 배열을 랜덤하게 섞는 함수 (Fisher-Yates shuffle)
+  const shuffleArray = <T,>(array: T[]): T[] => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+  
   const [scenarios, setScenarios] = useState<Scenario[]>([]);
   const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
@@ -179,12 +189,10 @@ const loadScenarios = async () => {
         id: scenario.id,
         title: adjustTextByDifficulty(scenario.title, 'title'),
         situation: adjustTextByDifficulty(scenario.situation, 'situation'),
-        options: scenario.scenario_options
-          .sort((a: any, b: any) => a.option_order - b.option_order)
-          .map((opt: any) => ({
-            ...opt,
-            text: adjustTextByDifficulty(opt.text, 'option'),
-          })),
+        options: shuffleArray(scenario.scenario_options).map((opt: any) => ({
+          ...opt,
+          text: adjustTextByDifficulty(opt.text, 'option'),
+        })),
       }));
 
       setScenarios(formattedSeeded);
@@ -195,12 +203,10 @@ const loadScenarios = async () => {
       id: scenario.id,
       title: adjustTextByDifficulty(scenario.title, 'title'),
       situation: adjustTextByDifficulty(scenario.situation, 'situation'),
-      options: scenario.scenario_options
-        .sort((a: any, b: any) => a.option_order - b.option_order)
-        .map((opt: any) => ({
-          ...opt,
-          text: adjustTextByDifficulty(opt.text, 'option'),
-        })),
+      options: shuffleArray(scenario.scenario_options).map((opt: any) => ({
+        ...opt,
+        text: adjustTextByDifficulty(opt.text, 'option'),
+      })),
     }));
 
     setScenarios(formatted);
