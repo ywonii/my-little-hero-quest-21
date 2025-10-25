@@ -40,20 +40,41 @@ serve(async (req) => {
             role: 'system', 
             content: `당신은 경계선 지능 아동을 위한 교육 시나리오를 만드는 전문가입니다. 
             사용자가 제공한 문제 상황을 바탕으로 아동이 상황 판단력과 사회성을 기를 수 있는 시나리오 10개를 만들어주세요.
+            각 시나리오는 3단계 난이도(beginner, intermediate, advanced)로 만들어야 합니다.
+            
             각 시나리오는 다음 형식을 따라야 합니다:
-            1. title: 간단한 상황 제목
-            2. situation: 구체적인 상황 설명 (아동 관점에서 이해하기 쉽게)
-            3. options: 3개의 선택지 배열 [a선택지, b선택지, c선택지]
-            4. correct_option: 올바른 선택지 번호 (0, 1, 또는 2)
+            {
+              "title": "간단한 상황 제목",
+              "beginner": {
+                "situation": "쉬운 수준의 구체적 상황 설명 (단순하고 명확한 상황)",
+                "options": ["선택지1", "선택지2", "선택지3"],
+                "correct_option": 0 또는 1 또는 2
+              },
+              "intermediate": {
+                "situation": "중간 수준의 구체적 상황 설명 (약간 복잡한 상황)",
+                "options": ["선택지1", "선택지2", "선택지3"],
+                "correct_option": 0 또는 1 또는 2
+              },
+              "advanced": {
+                "situation": "어려운 수준의 구체적 상황 설명 (복잡하고 세밀한 판단 필요)",
+                "options": ["선택지1", "선택지2", "선택지3"],
+                "correct_option": 0 또는 1 또는 2
+              }
+            }
+            
+            난이도별 차이:
+            - beginner: 단순하고 명확한 상황, 쉬운 선택지
+            - intermediate: 약간 복잡한 상황, 고민이 필요한 선택지
+            - advanced: 복잡하고 미묘한 상황, 깊은 사고가 필요한 선택지
             
             반드시 유효한 JSON 배열만 반환하고, 코드 블록이나 추가 설명은 포함하지 마세요.` 
           },
           { 
             role: 'user', 
-            content: `다음 문제 상황에 대한 교육 시나리오 10개를 만들어주세요: ${problemDescription}` 
+            content: `다음 문제 상황에 대한 교육 시나리오 10개를 3단계 난이도로 만들어주세요: ${problemDescription}` 
           }
         ],
-        max_tokens: 3000,
+        max_tokens: 6000,
         temperature: 0.7,
       }),
     });
@@ -124,44 +145,54 @@ serve(async (req) => {
       throw new Error('Failed to save theme');
     }
 
-    // 시나리오들을 데이터베이스에 저장
+    // 시나리오들을 데이터베이스에 저장 (각 시나리오를 3단계 난이도로 저장)
     const savedScenarios = [];
     
     for (const scenario of scenarios) {
-      // 시나리오 저장
-      const { data: scenarioData, error: scenarioError } = await supabase
-        .from('scenarios')
-        .insert([{
-          title: scenario.title,
-          situation: scenario.situation,
-          category: 'custom',
-          theme: themeData.theme_name
-        }])
-        .select()
-        .single();
+      // 각 난이도별로 시나리오 저장
+      const difficulties = [
+        { level: 1, key: 'beginner', data: scenario.beginner },
+        { level: 2, key: 'intermediate', data: scenario.intermediate },
+        { level: 3, key: 'advanced', data: scenario.advanced }
+      ];
 
-      if (scenarioError) {
-        console.error('Error saving scenario:', scenarioError);
-        continue;
-      }
-
-      // 선택지 저장
-      for (let i = 0; i < scenario.options.length; i++) {
-        const { error: optionError } = await supabase
-          .from('scenario_options')
+      for (const difficulty of difficulties) {
+        // 시나리오 저장
+        const { data: scenarioData, error: scenarioError } = await supabase
+          .from('scenarios')
           .insert([{
-            scenario_id: scenarioData.id,
-            text: scenario.options[i],
-            option_order: i,
-            is_correct: i === scenario.correct_option
-          }]);
+            title: scenario.title,
+            situation: difficulty.data.situation,
+            category: 'custom',
+            theme: themeData.theme_name,
+            difficulty_level: difficulty.level
+          }])
+          .select()
+          .single();
 
-        if (optionError) {
-          console.error('Error saving option:', optionError);
+        if (scenarioError) {
+          console.error(`Error saving ${difficulty.key} scenario:`, scenarioError);
+          continue;
         }
-      }
 
-      savedScenarios.push(scenarioData);
+        // 선택지 저장
+        for (let i = 0; i < difficulty.data.options.length; i++) {
+          const { error: optionError } = await supabase
+            .from('scenario_options')
+            .insert([{
+              scenario_id: scenarioData.id,
+              text: difficulty.data.options[i],
+              option_order: i,
+              is_correct: i === difficulty.data.correct_option
+            }]);
+
+          if (optionError) {
+            console.error('Error saving option:', optionError);
+          }
+        }
+
+        savedScenarios.push(scenarioData);
+      }
     }
 
     return new Response(JSON.stringify({ 

@@ -82,7 +82,7 @@ const AddScenario = () => {
             <h3 className="font-bold text-primary mb-2">AI가 도와드려요!</h3>
             <p className="text-sm text-muted-foreground">
               아이가 겪는 문제 상황을 설명해주시면, 
-              자동으로 10개의 교육 시나리오를 만들어드려요!
+              자동으로 30개의 교육 시나리오를 만들어드려요! (10개 상황 × 3단계 난이도)
             </p>
           </div>
         </Card>
@@ -121,7 +121,7 @@ const AddScenario = () => {
             ) : (
               <>
                 <Plus className="mr-2 h-5 w-5" />
-                시나리오 10개 생성하기
+                시나리오 30개 생성하기
               </>
             )}
           </Button>
