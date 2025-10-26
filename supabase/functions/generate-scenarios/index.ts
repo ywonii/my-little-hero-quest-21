@@ -45,7 +45,7 @@ serve(async (req) => {
             - intermediate: 초등학교 중학년 문해력 수준 (보통 길이의 문장, 약간 복잡한 상황)
             - advanced: 초등학교 고학년 문해력 수준 (긴 문장, 복잡하고 세밀한 상황)
             
-            총 1개의 상황을 만들어주세요. 각 상황마다 3가지 난이도 버전이 필요합니다.
+            총 10개의 상황을 만들어주세요. 각 상황마다 3가지 난이도 버전이 필요합니다.
             
             형식:
             {
@@ -71,7 +71,7 @@ serve(async (req) => {
           },
           { 
             role: 'user', 
-            content: `다음 주제로 1개 상황의 시나리오를 만들어주세요 (각 상황마다 3가지 난이도): ${problemDescription}` 
+            content: `다음 주제로 10개 상황의 시나리오를 만들어주세요 (각 상황마다 3가지 난이도): ${problemDescription}` 
           }
         ],
         max_tokens: 6000,
@@ -149,67 +149,49 @@ serve(async (req) => {
     const savedScenarios = [];
     
     for (const scenario of scenarios) {
-      // 난이도 데이터 안전 확보 (키 변형/누락 대비)
-      const beginner = scenario?.beginner ?? scenario?.Beginner ?? scenario?.easy ?? scenario?.['쉬움'];
-      const intermediate = scenario?.intermediate ?? scenario?.Intermediate ?? scenario?.medium ?? scenario?.['보통'];
-      const advanced = scenario?.advanced ?? scenario?.Advanced ?? scenario?.hard ?? scenario?.['어려움'];
-
+      // 각 난이도별로 시나리오 저장
       const difficulties = [
-        { level: 1 as const, key: 'beginner', data: beginner },
-        { level: 2 as const, key: 'intermediate', data: intermediate ?? beginner },
-        { level: 3 as const, key: 'advanced', data: advanced ?? intermediate ?? beginner },
+        { level: 1, key: 'beginner', data: scenario.beginner },
+        { level: 2, key: 'intermediate', data: scenario.intermediate },
+        { level: 3, key: 'advanced', data: scenario.advanced }
       ];
 
       for (const difficulty of difficulties) {
-        try {
-          if (!difficulty.data || !difficulty.data.situation || !Array.isArray(difficulty.data.options)) {
-            console.warn(`Skipping ${difficulty.key} due to missing fields. Falling back to beginner.`);
-          }
+        // 시나리오 저장
+        const { data: scenarioData, error: scenarioError } = await supabase
+          .from('scenarios')
+          .insert([{
+            title: scenario.title,
+            situation: difficulty.data.situation,
+            category: 'custom',
+            theme: themeData.theme_name,
+            difficulty_level: difficulty.level
+          }])
+          .select()
+          .single();
 
-          // 시나리오 저장
-          const { data: scenarioData, error: scenarioError } = await supabase
-            .from('scenarios')
-            .insert([{
-              title: scenario.title,
-              situation: (difficulty.data?.situation) ?? (beginner?.situation ?? ''),
-              category: 'custom',
-              theme: themeData.theme_name,
-              difficulty_level: Number(difficulty.level),
-            }])
-            .select()
-            .single();
-
-          if (scenarioError) {
-            console.error(`Error saving ${difficulty.key} scenario:`, scenarioError);
-            continue;
-          }
-
-          const options = Array.isArray(difficulty.data?.options) ? difficulty.data.options
-                          : Array.isArray(beginner?.options) ? beginner.options
-                          : [];
-
-          // 선택지 저장
-          for (let i = 0; i < options.length; i++) {
-            const { error: optionError } = await supabase
-              .from('scenario_options')
-              .insert([{
-                scenario_id: scenarioData.id,
-                text: options[i],
-                option_order: i,
-                is_correct: i === (difficulty.data?.correct_option ?? beginner?.correct_option ?? -1),
-              }]);
-
-            if (optionError) {
-              console.error('Error saving option:', optionError);
-            }
-          }
-
-          savedScenarios.push(scenarioData);
-          console.log(`Saved scenario "${scenario.title}" at difficulty ${difficulty.level}`);
-        } catch (e) {
-          console.error(`Unexpected error saving ${difficulty.key} for "${scenario.title}":`, e);
+        if (scenarioError) {
+          console.error(`Error saving ${difficulty.key} scenario:`, scenarioError);
           continue;
         }
+
+        // 선택지 저장
+        for (let i = 0; i < difficulty.data.options.length; i++) {
+          const { error: optionError } = await supabase
+            .from('scenario_options')
+            .insert([{
+              scenario_id: scenarioData.id,
+              text: difficulty.data.options[i],
+              option_order: i,
+              is_correct: i === difficulty.data.correct_option
+            }]);
+
+          if (optionError) {
+            console.error('Error saving option:', optionError);
+          }
+        }
+
+        savedScenarios.push(scenarioData);
       }
     }
 
